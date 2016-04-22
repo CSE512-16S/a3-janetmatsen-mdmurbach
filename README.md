@@ -1,5 +1,6 @@
-a3-murbach-matsen
+Interactive Vizualizatino of ...
 ===============
+Assignment 3 for CSE512
 
 (this is a the template from https://github.com/CSE512-16S/a3-jheer-mcorrell-jhoffs)
 
