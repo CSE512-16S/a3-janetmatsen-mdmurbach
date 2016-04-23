@@ -25,7 +25,7 @@
 			
 			d3.tsv("./data/power_CO2.tsv",function(row,i){
                  return {
-                 country: row.country,
+                 country: row.Country,
                  CO2: row.CO2_emissions_per_cap,
                  electricity: row.kWh_per_cap,
                  key: i
@@ -49,7 +49,7 @@
                      .range([0, w]);    
                      
                   var yScale = d3.scale.linear()
-                     .domain([0, d3.max(data, function(d) { return d.electricity; })])
+                     .domain([d3.max(data, function(d) { return d.electricity; }), 0])
                      .range([0, h]);
                
                   var scatter = d3.select(".chart").selectAll("circle")
@@ -65,7 +65,23 @@
                      scatter
                      .attr("cx",function(d){ return xScale(d.CO2)})
                      .attr("cy",function(d){ return yScale(d.electricity)});
-
+                     
+                d3.select(".chart").selectAll("text")
+                   .data(data)
+                   .enter()
+                   .append("text")
+                   .text(function(d) {
+                        return d.country;
+                   })
+                   .attr("x", function(d) {
+                        return xScale(d.CO2);
+                   })
+                   .attr("y", function(d) {
+                        return yScale(d.electricity);
+                   })
+                   .attr("font-family", "sans-serif")
+                   .attr("font-size", "11px")
+                   .attr("fill", "red");
                 }
 
                 makeChart(data);
