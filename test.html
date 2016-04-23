@@ -35,7 +35,6 @@
                      console.log(error);
                    }
                    data = rows;
-                   console.log(data
                    makeChart(rows);
             });
 	
@@ -46,11 +45,11 @@
                   .attr("height",h);
 
                   var xScale = d3.scale.linear()
-                     .domain([0, d3.max(data, function(d) { return d[1]; })])
+                     .domain([0, d3.max(data, function(d) { return d.CO2; })])
                      .range([0, w]);    
                      
                   var yScale = d3.scale.linear()
-                     .domain([d3.max(data, function(d) { return d[2]; })])
+                     .domain([0, d3.max(data, function(d) { return d.electricity; })])
                      .range([0, h]);
                
                   var scatter = d3.select(".chart").selectAll("circle")
