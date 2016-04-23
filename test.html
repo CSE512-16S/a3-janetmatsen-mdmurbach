@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>A simple scatterplot with value labels</title>
+      <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<style type="text/css">
+			svg {
+                 display: block;
+                 margin-left: auto;
+                 margin-right: auto;
+                 border: 1px solid black;
+            }		
+		</style>
+	</head>
+	<body>
+    <svg class="chart"></svg>
+		<script type="text/javascript">
+
+		//Width and height
+			var w = 500;
+			var h = 500;
+            
+            var data;
+			
+			d3.csv("./data/power_cO2.csv",function(row,i){
+                   
+                   if(row.time < .01){
+                     return {
+                     time: row.time,
+                     current: row.current,
+                     key: i
+                     }
+                   };
+            }, function(error,rows){
+                   if(error){
+                     console.log(error);
+                   }
+                   data = rows;
+                   makeChart(rows);
+            });
+	
+			function makeChart(data){
+  
+                  var canvas = d3.select(".chart")
+                  .attr("width",w)
+                  .attr("height",h);
+				  
+				  var scale = d3.scale.linear()
+                    .domain([0, .001])
+                    .range([0, 500]);
+
+                      
+                  var scatter = d3.select(".chart").selectAll("circle")
+                      .data(data);
+                    
+                  // make marks
+                    scatter.enter().append("circle")
+                      .attr("fill-opacity",1)
+                      .attr("r",function(d){ return 5;})
+                      .attr("stroke-width","1px")
+					  .attr("stroke","red");
+                    
+                     scatter
+                     .attr("cx",function(d){ return d.time*100000})
+                     .attr("cy",function(d){ return d.current*10000 + 100;});
+
+                }
+
+                makeChart(data);
+		</script>
+	</body>
+</html>
