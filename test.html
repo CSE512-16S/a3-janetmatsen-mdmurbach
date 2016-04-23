@@ -23,15 +23,13 @@
             
             var data;
 			
-			d3.csv("./data/power_cO2.csv",function(row,i){
-                   
-                   if(row.time < .01){
-                     return {
-                     time: row.time,
-                     current: row.current,
-                     key: i
-                     }
-                   };
+			d3.csv("./data/power_CO2.csv",function(row,i){
+                 return {
+                 country: row.country,
+                 CO2: row.CO2,
+                 electricity: row.electricity,
+                 key: i
+                 }
             }, function(error,rows){
                    if(error){
                      console.log(error);
@@ -45,10 +43,6 @@
                   var canvas = d3.select(".chart")
                   .attr("width",w)
                   .attr("height",h);
-				  
-				  var scale = d3.scale.linear()
-                    .domain([0, .001])
-                    .range([0, 500]);
 
                       
                   var scatter = d3.select(".chart").selectAll("circle")
@@ -62,8 +56,8 @@
 					  .attr("stroke","red");
                     
                      scatter
-                     .attr("cx",function(d){ return d.time*100000})
-                     .attr("cy",function(d){ return d.current*10000 + 100;});
+                     .attr("cx",function(d){ return d.CO2*1000})
+                     .attr("cy",function(d){ return d.electricity});
 
                 }
 
