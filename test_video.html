@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>A simple scatterplot with value labels</title>
+      <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<style type="text/css">
+			svg {
+                 display: block;
+                 margin-left: auto;
+                 margin-right: auto;
+                 border: 1px solid black;
+            }		
+		</style>
+	</head>
+	<body>
+    <svg class="chart"></svg>
+		<script type="text/javascript">
+
+		//Width and height
+			var w = 500;
+			var h = 500;
+            
+            var data;
+			
+			d3.tsv("./data/power_CO2.tsv",function(row,i){
+                 return {
+                 country: row.country,
+                 CO2: row.CO2_emissions_per_cap,
+                 electricity: row.kWh_per_cap,
+                 key: i
+                 }
+            }, function(error,rows){
+                   if(error){
+                     console.log(error);
+                   }
+                   data = rows;
+                   makeChart(rows);
+            });
+	
+			function makeChart(data){
+  
+                  var canvas = d3.select(".chart")
+                  .attr("width",w)
+                  .attr("height",h);
+
+                  var xScale = d3.scale.linear()
+                     .domain([0, d3.max(data, function(d) { return d.CO2; })])
+                     .range([0, w]);    
+                     
+                  var yScale = d3.scale.linear()
+                     .domain([0, d3.max(data, function(d) { return d.electricity; })])
+                     .range([0, h]);
+               
+                  var scatter = d3.select(".chart").selectAll("circle")
+                      .data(data);
+                    
+                  // make marks
+                    scatter.enter().append("circle")
+                      .attr("fill-opacity",1)
+                      .attr("r",function(d){ return 5;})
+                      .attr("stroke-width","1px")
+					  .attr("stroke","red");
+                    
+                     scatter
+                     .attr("cx",function(d){ return xScale(d.CO2)})
+                     .attr("cy",function(d){ return yScale(d.electricity)});
+
+                }
+
+                makeChart(data);
+		</script>
+	</body>
+</html>
