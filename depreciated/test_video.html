@@ -68,8 +68,6 @@
 
       var xScale = d3.scale.linear().range([0, innerWidth]);
       var yScale = d3.scale.linear().range([innerHeight, 0]);
-      var rScale = d3.scale.linear().range([rMin, rMax]);
-      var colorScale = d3.scale.category10();
 
       var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
         .ticks(5)
@@ -80,14 +78,15 @@
         .tickFormat(d3.format("s"))
         .outerTickSize(0);
 
-      function render(data){
-        xScale.domain(d3.extent(data, function (d){ return d[xColumn]; }));
-        yScale.domain(d3.extent(data, function (d){ return d[yColumn]; }));
+      function render(power_CO2){
+        <!-- d3.extent(array[, accessor]) Returns the minimum and maximum value -->
+        xScale.domain(d3.extent(power_CO2, function (d){ return d[xColumn]; }));
+        yScale.domain(d3.extent(power_CO2, function (d){ return d[yColumn]; }));
 
         xAxisG.call(xAxis);
         yAxisG.call(yAxis);
 
-        var circles = g.selectAll("circle").data(data);
+        var circles = g.selectAll("circle").data(power_CO2);
         circles.enter().append("circle");
         circles
           .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
@@ -99,10 +98,19 @@
       function type(d){
         d.CO2_emissions_per_cap = +d.CO2_emissions_per_cap;
         d.kWh_per_cap = +d.kWh_per_cap;
+        console.log(d.Country + ": " + d.CO2_emissions_per_cap + d.kWh_per_cap)
         return d;
       }
 
-    d3.tsv("./data/power_CO2.tsv", type, render);
+    d3.tsv("./data/power_CO2.tsv", function(error, data){
+        if (error) {console.log(error); 
+        } else {
+        type(data);
+        console.log(data);
+        } 
+});
+    console.log('abc')
     </script>
   </body>
 </html>
+    <!-- type, render);
