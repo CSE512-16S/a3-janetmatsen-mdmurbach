@@ -23,11 +23,11 @@
             
             var data;
 			
-			d3.csv("./data/power_CO2.csv",function(row,i){
+			d3.tsv("./data/power_CO2.tsv",function(row,i){
                  return {
                  country: row.country,
-                 CO2: row.CO2,
-                 electricity: row.electricity,
+                 CO2: row.CO2_emissions_per_cap,
+                 electricity: row.kWh_per_cap,
                  key: i
                  }
             }, function(error,rows){
