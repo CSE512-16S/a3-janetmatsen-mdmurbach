@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>D3 Example</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="./d3/d3.v3.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <style>  /* CSS styles are set here */
     
@@ -23,6 +23,13 @@
         fill: none;
         stroke: #000;
         shape-rendering: crispEdges;
+      }
+      
+      .tooltip {
+          position: absolute;
+          width: 200px;
+          height: 28px;
+          pointer-events: none;
       }
 
     </style>
@@ -110,6 +117,12 @@
         // call() hands off g to the xAxis function, so our axis is generated within g
         xAxisG.call(xAxis);
         yAxisG.call(yAxis);
+        
+        
+        // add the tooltip area to the webpage
+        var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
         var circles = g.selectAll("circle").data(data);
         // create an actual svg circle for each object in circles.  
@@ -118,21 +131,22 @@
           .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
           .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
           .attr("r",       function (d){ return 5;}) 
-          //Create the tooltip label
+          //Create the tooltip
           .on("mouseover", function(d) {
-            svg.append("text")
-              .attr("id", "tooltip")
-              //.attr("x", function(d){ return xScale(d[xColumn]);})
-              //.attr("y", function(d){ return yScale(d[yColumn]);})
-              .attr("x", function(d) { return xScale(d.CO2_emissions_per_cap); })
-              .attr("y", function(d) { return yScale(d.kWh_per_cap);           })
-              .attr("text-anchor", "middle")
-              .attr("font-family", "sans-serif")
-              .attr("font-size", "11px")
-              .attr("font-weight", "bold")
-              .attr("fill", "black")
-              .text(function(d) { return d.Country; })
-          ;})
+              tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+              // tooltip text
+              tooltip.html(d.Country + "<br/> (" + d.CO2_emissions_per_cap.toFixed(2)  
+                + ", " + d.kWh_per_cap.toFixed(2) + ")")
+                   .style("left", (d3.event.pageX + 5) + "px")
+                   .style("top", (d3.event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+          });
         circles.exit().remove();
 
         console.log('label the data')
@@ -155,9 +169,13 @@
         }
 
       function type(d){
-        d.CO2_emissions_per_cap = +d.CO2_emissions_per_cap;
-        d.kWh_per_cap = +d.kWh_per_cap;
-        return d;
+        // Only reads in the points for which both CO2 and
+        // Energy data are available
+        if (d.CO2_emissions_per_cap > 0 && d.kWh_per_cap > 0) {
+            d.CO2_emissions_per_cap = +d.CO2_emissions_per_cap;
+            d.kWh_per_cap = +d.kWh_per_cap;
+            return d;
+        }
       }
 
       // d3.tsv() is an asynchronous method: the rest of your code is executed even while 
