@@ -41,6 +41,9 @@
       var yAxisLabelText = "kilowatt hours per capita";
       var yAxisLabelOffset = 60;
 
+      // define the areas for plotting.  These will be used for the scales. 
+      // conforms to Mike Bostock's suggestion: http://bl.ocks.org/mbostock/3019563
+      // but padding is called margin here
       var innerWidth  = outerWidth  - margin.left - margin.right;
       var innerHeight = outerHeight - margin.top  - margin.bottom;
 
@@ -56,9 +59,11 @@
       var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
       var xAxisG = g.append("g")
+        // assigning class x axis (stored as an HTML attribute, then used by CSS)
         .attr("class", "x axis")
         .attr("transform", "translate(0," + innerHeight + ")")
       var xAxisLabel = xAxisG.append("text")
+        // attr() sets DOM attribute values, whereas style() applies CSS styles directly to an element
         .style("text-anchor", "middle")
         .attr("x", innerWidth / 2)
         .attr("y", xAxisLabelOffset)
@@ -104,6 +109,7 @@
 
         console.log('label the data')
         // circles is a child of g which is svg
+        // appending text to circles, not all the text in the figure. 
         circles.enter().append("text");
         circles
           .text(function(d) { return d.Country; })
