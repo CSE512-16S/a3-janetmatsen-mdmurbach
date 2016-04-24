@@ -5,7 +5,7 @@
     <title>D3 Example</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-    <style>
+    <style>  /* CSS styles are set here */
     
       .axis text {
         font-family: 'Poiret One', cursive;
@@ -44,6 +44,12 @@
       var innerWidth  = outerWidth  - margin.left - margin.right;
       var innerHeight = outerHeight - margin.top  - margin.bottom;
 
+      // Before you can draw anything, you must create an SVG element. 
+      // Think of the SVG element as a canvas on which your visuals are rendered. 
+      // (In that respect, SVG is conceptually similar to HTML’s canvas element.) 
+      // At a minimum, it’s good to specify width and height values. 
+      // If you don’t specify these, the SVG will behave like a typically greedy, 
+      // block-level HTML element and take up as much room as it can within its enclosing element
       var svg = d3.select("body").append("svg")
         .attr("width", outerWidth)
         .attr("height", outerHeight);
@@ -88,6 +94,7 @@
         yAxisG.call(yAxis);
 
         var circles = g.selectAll("circle").data(data);
+        // create an actual svg circle for each object in circles.  
         circles.enter().append("circle");
         circles
           .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
@@ -96,6 +103,7 @@
         circles.exit().remove();
 
         console.log('label the data')
+        // circles is a child of g which is svg
         circles.enter().append("text");
         circles
           .text(function(d) { return d.Country; })
@@ -103,8 +111,11 @@
           .attr("y", function(d) { return yScale(d.kWh_per_cap);           })
           .attr("font-family", "sans-serif")
           .attr("font-size", "11px")
-          .attr("fill", "red");
-        circles.exit();
+          .attr("fill", "gray");
+        circles.exit()
+        // print the data to the console (maybe useful for debugging)
+        console.log(g.selectAll("circle"))
+        ; // put semicolon before end of function
         }
 
       function type(d){
@@ -113,7 +124,15 @@
         return d;
       }
 
+      // d3.tsv() is an asynchronous method: the rest of your code is executed even while 
+      // JavaScript is simultaneously waiting for the file to finish downloading into the browser. 
+      // Make sure to reference your data only from within the callback function 
+      // (or from within other functions that you call within the callback function).
       d3.tsv("./data/power_CO2.tsv", type, render);
+      // the online book suggests loading the data at the top and copying it to a var
+      // see "Handling Data Loading Errors" at 
+      // http://chimera.labs.oreilly.com/books/1230000000345/ch05.html#_data
+
 
     </script>
   </body>
