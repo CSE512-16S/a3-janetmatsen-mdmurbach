@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Example</title>
+    <script src="./d3/d3.v3.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <style>  /* CSS styles are set here */
+    
+        /* The axes themselves are made up of path, line, and text elements, 
+           so those are the three elements that we target in our CSS */
+      .axis text {
+        font-family: 'Poiret One', cursive;
+        font-size: 16pt;
+        /* ?? Why don't we have to specify fill color? */
+      }
+      <!-- ?? Are we defining attributes for the classes axis and label simultaneously? -->
+      .axis .label {
+        font-size: 20pt;
+      }
+
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      
+      .labels {
+        display: block;
+      }
+      
+      .dropdowns {
+        display: block;
+        margin: 10px;
+        font-size: 10pt;
+      }
+      
+      .tooltip {
+          position: absolute;
+          width: 200px;
+          height: 28px;
+          pointer-events: none;
+          color: red;
+          font-weight: bold;
+      }
+      
+      .svg {
+        display: block;
+        margin-left:auto;
+        margin-right: auto;        
+      }
+
+    </style>
+  </head>
+  <body>
+    <script>
+    
+      var outerWidth = 800;
+      var outerHeight = 500;
+      var margin = { left: 90, top: 50, right: 200, bottom: 60 };
+      var rMin = 1; // "r" stands for radius
+      var rMax = 6;
+      //var xColumn = "CO2_emissions_per_cap";
+      //var yColumn = "kWh_per_cap";
+      //var rColumn = "kWh_per_cap";
+      var yseries = "Energy use per capita (kilograms of oil equivalent)";
+      var xseries = "CO2 emissions per capita (metric tons)";
+
+      var xAxisLabelText = "CO2 emissions (kTons per capita)";
+      var xAxisLabelOffset = 48;
+
+      var yAxisLabelText = "Energy Use (kilowatt hours per capita)";
+      var yAxisLabelOffset = 60;
+
+      // define the areas for plotting.  These will be used for the scales. 
+      // conforms to Mike Bostock's suggestion: http://bl.ocks.org/mbostock/3019563
+      // but padding is called margin here
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      // Before you can draw anything, you must create an SVG element. 
+      // Think of the SVG element as a canvas on which your visuals are rendered. 
+      // (In that respect, SVG is conceptually similar to HTML’s canvas element.) 
+      // At a minimum, it’s good to specify width and height values. 
+      // If you don’t specify these, the SVG will behave like a typically greedy, 
+      // block-level HTML element and take up as much room as it can within its enclosing element
+      var svg = d3.select("body").append("svg")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var xAxisG = g.append("g")
+        // ?? defining class "x axis", a child of g, a child of svg
+        // ?? as of 4/24 no styles were added separately to the x axis 
+        // book does same thing: see "First, I am going to add the class names x and y to our x- and y-axes, respectively."
+        // in http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_updating_axes
+        // then uses x.axis to update the x axis after new random data is added. 
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + innerHeight + ")")
+      var xAxisLabel = xAxisG.append("text")
+        // attr() sets DOM attribute values, whereas style() applies CSS styles directly to an element
+        .style("text-anchor", "middle")
+        .attr("x", innerWidth / 2)
+        .attr("y", xAxisLabelOffset)
+        .attr("class", "label")
+        .text(xAxisLabelText);
+      // ?? is "y axis" something special in svg?  Or is it a d3 thing?  
+      var yAxisG = g.append("g")
+        .attr("class", "y axis");
+      var yAxisLabel = yAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)")
+        .attr("class", "label")
+        .text(yAxisLabelText);
+
+      var xScale = d3.scale.linear().range([0, innerWidth]);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+      var rScale = d3.scale.linear().range([rMin, rMax]);
+      var colorScale = d3.scale.category10();
+
+      var xAxis = d3.svg.axis().scale(xScale)
+        .orient("bottom")
+        .ticks(5) //Set *rough* # of ticks
+        .tickFormat(d3.format("s"))
+        .outerTickSize(0);
+      var yAxis = d3.svg.axis().scale(yScale)
+        .orient("left")
+        .ticks(5)
+        .tickFormat(d3.format("s"))
+        .outerTickSize(0);
+       
+      var data;
+      var x_dropDown;
+      var y_dropDown;
+      
+      d3.csv("./data/climate-data.csv",function(row,i){
+                 return {
+                     country: row["Country name"],
+                     series: row["Series name"],
+                     y1990: +row["1990"]
+                 }
+            }, function(error,rows){
+                   if(error){
+                     console.log(error);
+                   }
+                   
+                   data=d3.nest()
+                      .key(function(d) {return d.country;})
+                      .sortKeys(d3.ascending)
+                      .entries(rows);
+                  
+                  x_label = d3.select("body").append("label")
+                                .text("X axis")
+                                .attr("class","labels");
+                  // Create Dropdown table for x-axis
+                  x_dropDown = x_label.append("select")
+                                .attr("name", "x-list")
+                                .attr("class","dropdowns");
+                   //              
+                  var x_options = x_dropDown.selectAll("option")
+                       .data(data[0].values.map(function(d) { return (d.series); }))
+                     .enter()
+                       .append("option");
+                       
+                  x_options.text(function(d) {return d})
+                    .attr("value", function(d) {return d});
+
+                   // Create Dropdown table for y-axis
+                   
+                  y_label = d3.select("body").append("label")
+                                .text("Y axis")
+                                .attr("class","labels"); 
+                                
+                  y_dropDown = y_label.append("select")
+                                .attr("name", "y-list")
+                                .attr("class","dropdowns");
+                   //              
+                  var y_options = y_dropDown.selectAll("option")
+                       .data(data[0].values.map(function(d) { return (d.series); }))
+                     .enter()
+                       .append("option");
+                       
+                  y_options.text(function(d) {return d})
+                    .attr("value", function(d) {return d});
+
+                   render(data);
+             
+            });
+            
+      
+
+    // Called by filter. Returns true if x-series and y-series values exist for a country
+    function isSeries(xseries, yseries) {
+        return function(x) {
+            include = true;
+            // Check if x-value exists for each country 
+            var xInd = x.values.find(function(f) { return (f.series == xseries && !isNaN(f.y1990))});  
+            
+            if (xInd != null) { // If x-value exists, check for y-value
+                var yInd = x.values.find(function(f) { return (f.series == yseries && f.country == xInd.country && !isNaN(f.y1990))});
+            } else {
+                include = false;
+            }
+            if (yInd == null) {
+                include = false;
+            }
+            return include
+        }
+    }
+
+      function render(data){
+        
+        filtered = data.filter(isSeries(xseries, yseries));
+        
+        xScale.domain(d3.extent(data, function (d) { 
+                    var index = d.values.find(function(f) { return f.series == xseries});
+                    //console.log(index.country);
+                    //console.log(index.y1990); 
+                    return index.y1990; }));
+        yScale.domain(d3.extent(data, function (d) { 
+                    var index = d.values.find(function(f) { return f.series == yseries});
+                    //console.log(index.country);
+                    //console.log(index.y1990); 
+                    return index.y1990; }));
+                    
+        yAxisLabel.text(yseries)
+        xAxisLabel.text(xseries)
+
+        // generate the x and y axes by calling the functions that generate them. 
+        // call() hands off g to the xAxis function, so our axis is generated within g
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+        
+        
+        // add the tooltip area to the webpage
+        var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+        
+        var circles = g.selectAll("circle").data(filtered);
+        // create an actual svg circle for each object in circles.  
+        circles.enter().append("circle");
+        circles
+          .attr("cx", function (d){
+                    var index = d.values.find(function(f) { return f.series == xseries });
+                    return xScale(index.y1990); })
+          .attr("cy", function (d){ 
+                    var index = d.values.find(function(f) { return f.series == yseries});
+                    return yScale(index.y1990); })
+          .attr("r", function (d){ return 5;}) 
+          //Create the tooltip
+          .on("mouseover", function(d) {
+              var index = d.values.find(function(f) { return f.series == xseries});
+              tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+              // tooltip text
+              tooltip.html(index.country)
+                   .style("left", (d3.event.pageX + 5) + "px")// margin.left + "px"
+                   .style("top", (d3.event.pageY - 28) + "px");// margin.top + "px"
+          })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+          });
+        circles.exit().remove();
+
+        x_dropDown.on("change", x_menuChanged);
+        y_dropDown.on("change", y_menuChanged);
+ 
+    }
+    
+    function x_menuChanged() {
+        xseries = d3.event.target.value;  
+        render(data)
+    }
+    
+    function y_menuChanged() {
+        yseries = d3.event.target.value;  
+        render(data)
+    }
+    </script>
+  </body>
+</html>
