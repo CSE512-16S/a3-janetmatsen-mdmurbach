@@ -28,6 +28,7 @@
         shape-rendering: crispEdges;
       }
       
+      /* labels drop-down selectors */
       .labels {
         display: block;
       }
@@ -145,11 +146,13 @@
       // to wrap all of the code dependent on your external request within 
       // the request callback, ensuring that this code has access to the data 
       // before executing.
-      // ?? Do we have 2 callback functions:  d3.csv(url[[, accessor], callback])
+      // ?? Do we have 2 callback functions? syntax: d3.csv(url[[, accessor], callback])
+      // ?? how does this differ from test2_video.html, where we used a render function? 
       d3.csv("./data/climate-data.csv", function(row,i){
 		 // i is the row number. 
                  return {
                      country: row["Country name"],
+		     // allows for selections by row.series
                      series: row["Series name"],
                      y1990: +row["1990"]
                  }
@@ -170,41 +173,51 @@
 		      // values of the specified object 
                       .entries(rows);
                   
-		
+		  // x-axis label
                   x_label = d3.select("body").append("label")
                                 .text("X axis")
                                 .attr("class","labels");
+
                   // Create Dropdown table for x-axis
                   x_dropDown = x_label.append("select")
-                                .attr("name", "x-list")
+                                //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
                                 .attr("class","dropdowns");
-                   //              
+
+                  // populate the dropDown options (without labels)           
                   var x_options = x_dropDown.selectAll("option")
                        .data(data[0].values.map(function(d) { return (d.series); }))
                      .enter()
                        .append("option");
-                       
-                  x_options.text(function(d) {return d})
-                    .attr("value", function(d) {return d});
+                  
+		  // put labels on the dropdown options.  
+		  // (empty strings on dropdowns if omitted)    
+                  x_options.text(function(d) {return d}) // adds label to each dropdown row
+                    //.attr("value", function(d) {return d});  // redundant (??) 
+		    ;
 
-                   // Create Dropdown table for y-axis
-                   
+                  // Create Dropdown table for y-axis
                   y_label = d3.select("body").append("label")
                                 .text("Y axis")
                                 .attr("class","labels"); 
                                 
                   y_dropDown = y_label.append("select")
-                                .attr("name", "y-list")
+                                .attr("name", "y-list")  // ?? redundant b/c not in CSS?
                                 .attr("class","dropdowns");
-                   //              
+
+                  // populate the dropDown options (without labels)  
+		  // ?? just curious, could the x and y functions be combined 
+		  // into 1 factored function? (J doesn't have namespace intuition yet) 
                   var y_options = y_dropDown.selectAll("option")
                        .data(data[0].values.map(function(d) { return (d.series); }))
                      .enter()
                        .append("option");
                        
+		  // put text on each y dropDown
                   y_options.text(function(d) {return d})
                     .attr("value", function(d) {return d});
-
+		
+		   // render filters out data with missing values, 
+		   // updates scales, plots the scatter points
                    render(data);
              
             });
