@@ -59,9 +59,9 @@
   <body>
     <script>
       // set plot's dimensions
-      var outerWidth = 800;
+      var outerWidth = 900;
       var outerHeight = 500;
-      var margin = { left: 90, top: 50, right: 200, bottom: 60 };
+      var margin = { left: 90, top: 50, right: 300, bottom: 60 }; // M increase right margin to fit legend
 
       // make some space for the x and y axis labels
       var xAxisLabelOffset = 48;
@@ -149,13 +149,14 @@
       // before executing.
       // ?? Do we have 2 callback functions? syntax: d3.csv(url[[, accessor], callback])
       // ?? how does this differ from test2_video.html, where we used a render function? 
-      d3.csv("./data/climate-data.csv", function(row,i){
+      d3.csv("./data/climate-data-wRegion.csv", function(row,i){
 		 // i is the row number. 
                  return {
                      country: row["Country name"],
 		     // allows for selections by row.series
                      series: row["Series name"],
-                     y1990: +row["1990"]
+                     y1990: +row["1990"],
+                     region: row["Country region"]
                  }
 	    // ?? is rows a built-in thing to iterate over in d3.csv ?? 
             }, function(error,rows){
@@ -163,7 +164,7 @@
                      console.log(error);
                    }
                    
-		   // create a nest operator (allows for nested key-value pairs)
+		      // create a nest operator (allows for nested key-value pairs)
                    data=d3.nest()
 		      // the country will be the keys
                       .key(function(d) {return d.country;})
@@ -173,17 +174,17 @@
 		      // values of the specified object 
                       .entries(rows);
                   
-		  // x-axis label
+		      // x-axis label
                   x_label = d3.select("body").append("label")
                                 .text("X axis")
                                 .attr("class","labels");
 
-                  // Create Dropdown table for x-axis
+              // Create Dropdown table for x-axis
                   x_dropDown = x_label.append("select")
                                 //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
                                 .attr("class","dropdowns");
 
-                  // populate the dropDown options (without labels)           
+              // populate the dropDown options (without labels)           
                   var x_options = x_dropDown.selectAll("option")
                        .data(data[0].values.map(function(d) { return (d.series); }))
                      .enter()
@@ -192,7 +193,8 @@
 		  // put labels on the dropdown options.  
 		  // (empty strings on dropdowns if omitted)    
                   x_options.text(function(d) {return d}) // adds label to each dropdown row
-                    //.attr("value", function(d) {return d});  // redundant (??) 
+                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
+                    .attr("selected", function(d) {if(d == xseries) { return d}}); // set initially selected option
 		    ;
 
                   // Create Dropdown table for y-axis
@@ -206,7 +208,9 @@
 
                   // populate the dropDown options (without labels)  
 		  // ?? just curious, could the x and y functions be combined 
-		  // into 1 factored function? (J doesn't have namespace intuition yet) 
+		  // into 1 factored function? (J doesn't have namespace intuition yet)
+          // M - I think there need to be two dropdown objects, but the data/attributes 
+          // for each could probably be combined with some thought.
                   var y_options = y_dropDown.selectAll("option")
                        .data(data[0].values.map(function(d) { return (d.series); }))
                      .enter()
@@ -214,7 +218,9 @@
                        
 		  // put text on each y dropDown
                   y_options.text(function(d) {return d})
-                    .attr("value", function(d) {return d});
+                    .attr("value", function(d) {return d})
+                    .attr("selected", function(d) {if(d == yseries) { return d}}); // set initially selected option
+                    
 		
 		   // render filters out data with missing values, 
 		   // updates scales, plots the scatter points
@@ -272,7 +278,6 @@
         xAxisG.call(xAxis);
         yAxisG.call(yAxis);
         
-        
         // add the tooltip area to the webpage
         var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -289,7 +294,11 @@
           .attr("cy", function (d){ 
                     var index = d.values.find(function(f) { return f.series == yseries });
                     return yScale(index.y1990); })
-          .attr("r", function (d){ return 5 })   
+          .attr("r", function (d){ return 5 })
+          .attr("fill", function (d) { 
+                    var index = d.values.find(function(f) { 
+                    return f.series == yseries });
+                    return colorScale(index.region); })
           //Create the tooltip for each circle
           .on("mouseover", function(d) {
               var index = d.values.find(function(f) { return f.series == xseries });
@@ -308,6 +317,26 @@
                    .style("opacity", 0);
           });
         circles.exit().remove();
+        
+        // Set up legend using the colorScale variable defined earlier
+        var legend = svg.selectAll(".legend")
+              .data(colorScale.domain())
+            .enter().append("g")
+              .attr("class", "legend")
+              .attr("transform", function(d, i) { return "translate(90," + i * 20 + ")"; });
+
+          legend.append("rect")
+              .attr("x", innerWidth + 18)
+              .attr("width", 18)
+              .attr("height", 18)
+              .style("fill", colorScale);
+
+          legend.append("text")
+              .attr("x", innerWidth + 18 + 18 + 9) // innerWidth + 18 + rect width + offset
+              .attr("y", 9)
+              .attr("dy", ".35em")
+              .style("text-anchor", "begin")
+              .text(function(d) { return d; });
 
         x_dropDown.on("change", x_menuChanged);
         y_dropDown.on("change", y_menuChanged);
