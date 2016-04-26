@@ -7,18 +7,21 @@
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <style>  /* CSS styles are set here */
     
-        /* The axes themselves are made up of path, line, and text elements, 
-           so those are the three elements that we target in our CSS */
+      /* Select and style all elements with class="text" (svg text, not html text)(?) */
+      /* Includes axes text. */ 
       .axis text {
+	/* uses google fonts */
         font-family: 'Poiret One', cursive;
         font-size: 16pt;
         /* ?? Why don't we have to specify fill color? */
       }
-      <!-- ?? Are we defining attributes for the classes axis and label simultaneously? -->
+      /* Are we defining attributes for the classes axis and label simultaneously */
       .axis .label {
         font-size: 20pt;
       }
 
+      /* classes "path" and "line" are used for axes (as is text) */
+      /* same comma syntax as eBook: http://alignedleft.com/tutorials/d3/axes */
       .axis path, .axis line {
         fill: none;
         stroke: #000;
@@ -54,22 +57,13 @@
   </head>
   <body>
     <script>
-    
+      // set plot's dimensions
       var outerWidth = 800;
       var outerHeight = 500;
       var margin = { left: 90, top: 50, right: 200, bottom: 60 };
-      var rMin = 1; // "r" stands for radius
-      var rMax = 6;
-      //var xColumn = "CO2_emissions_per_cap";
-      //var yColumn = "kWh_per_cap";
-      //var rColumn = "kWh_per_cap";
-      var yseries = "Energy use per capita (kilograms of oil equivalent)";
-      var xseries = "CO2 emissions per capita (metric tons)";
 
-      var xAxisLabelText = "CO2 emissions (kTons per capita)";
+      // make some space for the x and y axis labels
       var xAxisLabelOffset = 48;
-
-      var yAxisLabelText = "Energy Use (kilowatt hours per capita)";
       var yAxisLabelOffset = 60;
 
       // define the areas for plotting.  These will be used for the scales. 
@@ -78,21 +72,33 @@
       var innerWidth  = outerWidth  - margin.left - margin.right;
       var innerHeight = outerHeight - margin.top  - margin.bottom;
 
-      // Before you can draw anything, you must create an SVG element. 
-      // Think of the SVG element as a canvas on which your visuals are rendered. 
-      // (In that respect, SVG is conceptually similar to HTML’s canvas element.) 
-      // At a minimum, it’s good to specify width and height values. 
-      // If you don’t specify these, the SVG will behave like a typically greedy, 
-      // block-level HTML element and take up as much room as it can within its enclosing element
+      // could map a 3rd data set onto radius (or color!)
+      // var rMin = 1; // "r" stands for radius
+      // var rMax = 6;
+      
+      // Initial x and y series to plot 
+      var yseries = "Energy use per capita (kilograms of oil equivalent)";
+      var xseries = "CO2 emissions per capita (metric tons)";
+      var xAxisLabelText = "CO2 emissions (kTons per capita)";
+      var yAxisLabelText = "Energy Use (kilowatt hours per capita)";
+
+      // create an SVG element (think of it as a canvas on which
+      // your visuals are rendered. 
+      // (conceptually similar to HTML’s canvas element.) 
       var svg = d3.select("body").append("svg")
+	// if you don't specify width and height, SVG will be greedy
         .attr("width", outerWidth)
         .attr("height", outerHeight);
+
+      // master handle for the plot's chart area
       var g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
       var xAxisG = g.append("g")
         // ?? defining class "x axis", a child of g, a child of svg
         // ?? as of 4/24 no styles were added separately to the x axis 
-        // book does same thing: see "First, I am going to add the class names x and y to our x- and y-axes, respectively."
+        // book does same thing: see "First, I am going to add the class 
+	// names x and y to our x- and y-axes, respectively."
         // in http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_updating_axes
         // then uses x.axis to update the x axis after new random data is added. 
         .attr("class", "x axis")
@@ -104,7 +110,8 @@
         .attr("y", xAxisLabelOffset)
         .attr("class", "label")
         .text(xAxisLabelText);
-      // ?? is "y axis" something special in svg?  Or is it a d3 thing?  
+
+      // ?? Why are we giving this element a class that doesn't have a CSS style? 
       var yAxisG = g.append("g")
         .attr("class", "y axis");
       var yAxisLabel = yAxisG.append("text")
@@ -115,12 +122,12 @@
 
       var xScale = d3.scale.linear().range([0, innerWidth]);
       var yScale = d3.scale.linear().range([innerHeight, 0]);
-      var rScale = d3.scale.linear().range([rMin, rMax]);
+      //var rScale = d3.scale.linear().range([rMin, rMax]);
       var colorScale = d3.scale.category10();
 
       var xAxis = d3.svg.axis().scale(xScale)
         .orient("bottom")
-        .ticks(5) //Set *rough* # of ticks
+        .ticks(5) 	// sets *rough* # of ticks
         .tickFormat(d3.format("s"))
         .outerTickSize(0);
       var yAxis = d3.svg.axis().scale(yScale)
@@ -129,26 +136,41 @@
         .tickFormat(d3.format("s"))
         .outerTickSize(0);
        
+      // ?? global variable definitions
       var data;
       var x_dropDown;
       var y_dropDown;
       
-      d3.csv("./data/climate-data.csv",function(row,i){
+      // d3 requests (like d3.csv) are asynchronous so it is best practice 
+      // to wrap all of the code dependent on your external request within 
+      // the request callback, ensuring that this code has access to the data 
+      // before executing.
+      // ?? Do we have 2 callback functions:  d3.csv(url[[, accessor], callback])
+      d3.csv("./data/climate-data.csv", function(row,i){
+		 // i is the row number. 
                  return {
                      country: row["Country name"],
                      series: row["Series name"],
                      y1990: +row["1990"]
                  }
+	    // ?? is rows a built-in thing to iterate over in d3.csv ?? 
             }, function(error,rows){
                    if(error){
                      console.log(error);
                    }
                    
+		   // create a nest operator (allows for nested key-value pairs)
                    data=d3.nest()
+		      // the country will be the keys
                       .key(function(d) {return d.country;})
+		      // ?? sort the nested data in ascending column name order ??
+		      // ?? is this line necessary ?? 
                       .sortKeys(d3.ascending)
+		      // .entries returns an array containing the property keys and 
+		      // values of the specified object 
                       .entries(rows);
                   
+		
                   x_label = d3.select("body").append("label")
                                 .text("X axis")
                                 .attr("class","labels");
