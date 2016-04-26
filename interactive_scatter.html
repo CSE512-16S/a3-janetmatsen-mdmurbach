@@ -58,6 +58,9 @@
   </head>
   <body>
     <script>
+      // global variable definitions
+      // have to be defined outside the d3.csv call so they can be accessed later on
+
       // set plot's dimensions
       var outerWidth = 900;
       var outerHeight = 500;
@@ -137,8 +140,6 @@
         .tickFormat(d3.format("s"))
         .outerTickSize(0);
        
-      // global variable definitions
-      // have to be defined outside the d3.csv call so they can be accessed later on
       var data;
       var x_dropDown;
       var y_dropDown;
