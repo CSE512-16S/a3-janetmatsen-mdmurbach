@@ -143,6 +143,8 @@
       var data;
       var x_dropDown;
       var y_dropDown;
+
+      var years;
       
       // d3 requests (like d3.csv) are asynchronous so it is best practice 
       // to wrap all of the code dependent on your external request within 
@@ -310,6 +312,10 @@
           });
         circles.exit().remove();
 
+	// print the data to the console (maybe useful for debugging)
+        console.log(g.selectAll("circle"))
+
+	// update the graphic upon menu selection
         x_dropDown.on("change", x_menuChanged);
         y_dropDown.on("change", y_menuChanged);
  
