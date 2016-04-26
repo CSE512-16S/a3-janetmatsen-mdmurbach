@@ -137,7 +137,8 @@
         .tickFormat(d3.format("s"))
         .outerTickSize(0);
        
-      // ?? global variable definitions
+      // global variable definitions
+      // have to be defined outside the d3.csv call so they can be accessed later on
       var data;
       var x_dropDown;
       var y_dropDown;
@@ -166,8 +167,7 @@
                    data=d3.nest()
 		      // the country will be the keys
                       .key(function(d) {return d.country;})
-		      // ?? sort the nested data in ascending column name order ??
-		      // ?? is this line necessary ?? 
+		      // sort the nested data in ascending column name order
                       .sortKeys(d3.ascending)
 		      // .entries returns an array containing the property keys and 
 		      // values of the specified object 
@@ -224,24 +224,30 @@
             
       
 
-    // Called by filter. Returns true if x-series and y-series values exist for a country
+    // Returns true if x-series and y-series values exist for a country
+    // Called by filter(), which applies the function element-wise. 
     function isSeries(xseries, yseries) {
         return function(x) {
+	    // include the data point unless it is missing an x or y value
             include = true;
-            // Check if x-value exists for each country 
-            var xInd = x.values.find(function(f) { return (f.series == xseries && !isNaN(f.y1990))});  
+	    
+            // xInd = true if x-value exists for each country 
+            var xInd = x.values.find(
+		function(f) { return (f.series == xseries && !isNaN(f.y1990))});  
             
+	    // 
             if (xInd != null) { // If x-value exists, check for y-value
-                var yInd = x.values.find(function(f) { return (f.series == yseries && f.country == xInd.country && !isNaN(f.y1990))});
-            } else {
-                include = false;
-            }
-            if (yInd == null) {
-                include = false;
-            }
+                var yInd = x.values.find(function(f) { 
+			return (f.series == yseries 
+				// ?? maybe we aren't applying to single country data sets...
+				&& f.country == xInd.country 
+				&& !isNaN(f.y1990))}) ;} 
+	    else {include = false ;}
+
+            if (yInd == null) { include = false ;}
+
             return include
-        }
-    }
+        }}
 
       function render(data){
         
@@ -280,15 +286,17 @@
                     var index = d.values.find(function(f) { return f.series == xseries });
                     return xScale(index.y1990); })
           .attr("cy", function (d){ 
-                    var index = d.values.find(function(f) { return f.series == yseries});
+                    var index = d.values.find(function(f) { return f.series == yseries });
                     return yScale(index.y1990); })
-          .attr("r", function (d){ return 5;}) 
+          .attr("r", function (d){ return 5 })   
+
           //Create the tooltip
           .on("mouseover", function(d) {
-              var index = d.values.find(function(f) { return f.series == xseries});
+              var index = d.values.find(function(f) { return f.series == xseries });
               tooltip.transition()
                    .duration(200)
                    .style("opacity", .9);
+
               // tooltip text
               tooltip.html(index.country)
                    .style("left", (d3.event.pageX + 5) + "px")// margin.left + "px"
