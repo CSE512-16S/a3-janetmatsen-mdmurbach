@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Example</title>
+    <script src="./d3/d3.v3.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <style>  /* CSS styles are set here */
+    
+        /* The axes themselves are made up of path, line, and text elements, 
+           so those are the three elements that we target in our CSS */
+      .axis text {
+        font-family: 'Poiret One', cursive;
+        font-size: 16pt;
+        /* ?? Why don't we have to specify fill color? */
+      }
+      <!-- ?? Are we defining attributes for the classes axis and label simultaneously? -->
+      .axis .label {
+        font-size: 20pt;
+      }
+
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      
+      .tooltip {
+          position: absolute;
+          width: 200px;
+          height: 28px;
+          pointer-events: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <script>
+    
+      var outerWidth = 800;
+      var outerHeight = 500;
+      var margin = { left: 90, top: 5, right: 200, bottom: 60 };
+      var rMin = 1; // "r" stands for radius
+      var rMax = 6;
+      var xColumn = "CO2_emissions_per_cap";
+      var yColumn = "kWh_per_cap";
+      var rColumn = "kWh_per_cap";
+
+      var xAxisLabelText = "CO2 emissions per capita (__ units)";
+      var xAxisLabelOffset = 48;
+
+      var yAxisLabelText = "kilowatt hours per capita";
+      var yAxisLabelOffset = 60;
+
+      // define the areas for plotting.  These will be used for the scales. 
+      // conforms to Mike Bostock's suggestion: http://bl.ocks.org/mbostock/3019563
+      // but padding is called margin here
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      // Before you can draw anything, you must create an SVG element. 
+      // Think of the SVG element as a canvas on which your visuals are rendered. 
+      // (In that respect, SVG is conceptually similar to HTML’s canvas element.) 
+      // At a minimum, it’s good to specify width and height values. 
+      // If you don’t specify these, the SVG will behave like a typically greedy, 
+      // block-level HTML element and take up as much room as it can within its enclosing element
+      var svg = d3.select("body").append("svg")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var xAxisG = g.append("g")
+        // ?? defining class "x axis", a child of g, a child of svg
+        // ?? as of 4/24 no styles were added separately to the x axis 
+        // book does same thing: see "First, I am going to add the class names x and y to our x- and y-axes, respectively."
+        // in http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_updating_axes
+        // then uses x.axis to update the x axis after new random data is added. 
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + innerHeight + ")")
+      var xAxisLabel = xAxisG.append("text")
+        // attr() sets DOM attribute values, whereas style() applies CSS styles directly to an element
+        .style("text-anchor", "middle")
+        .attr("x", innerWidth / 2)
+        .attr("y", xAxisLabelOffset)
+        .attr("class", "label")
+        .text(xAxisLabelText);
+      // ?? is "y axis" something special in svg?  Or is it a d3 thing?  
+      var yAxisG = g.append("g")
+        .attr("class", "y axis");
+      var yAxisLabel = yAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)")
+        .attr("class", "label")
+        .text(yAxisLabelText);
+
+      var xScale = d3.scale.linear().range([0, innerWidth]);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+      var rScale = d3.scale.linear().range([rMin, rMax]);
+      var colorScale = d3.scale.category10();
+
+      var xAxis = d3.svg.axis().scale(xScale)
+        .orient("bottom")
+        .ticks(5) //Set *rough* # of ticks
+        .tickFormat(d3.format("s"))
+        .outerTickSize(0);
+      var yAxis = d3.svg.axis().scale(yScale)
+        .orient("left")
+        .ticks(5)
+        .tickFormat(d3.format("s"))
+        .outerTickSize(0);
+
+      function render(data){
+        xScale.domain(d3.extent(data, function (d){ return d[xColumn]; }));
+        yScale.domain(d3.extent(data, function (d){ return d[yColumn]; }));
+
+        // generate the x and y axes by calling the functions that generate them. 
+        // call() hands off g to the xAxis function, so our axis is generated within g
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+        
+        
+        // add the tooltip area to the webpage
+        var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+        var circles = g.selectAll("circle").data(data);
+        // create an actual svg circle for each object in circles.  
+        circles.enter().append("circle");
+        circles
+          .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
+          .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
+          .attr("r",       function (d){ return 5;}) 
+          //Create the tooltip
+          .on("mouseover", function(d) {
+              tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+              // tooltip text
+              tooltip.html(d.Country + "<br/> (" + d.CO2_emissions_per_cap.toFixed(2)  
+                + ", " + d.kWh_per_cap.toFixed(2) + ")")
+                   .style("left", (d3.event.pageX + 5) + "px")
+                   .style("top", (d3.event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+          });
+        circles.exit().remove();
+
+        console.log('label the data')
+        // circles is a child of g which is svg
+        // appending text to circles, not all the text in the figure. 
+//        circles.enter().append("text");
+//        circles
+//          .text(function(d) { return d.Country; })
+//          .attr("x", function(d) { return xScale(d.CO2_emissions_per_cap); })
+//          .attr("y", function(d) { return yScale(d.kWh_per_cap);           })
+//          .attr("font-family", "sans-serif")
+//          .attr("font-size", "11px")
+//          <!-- fill is the way to color svg text-->
+//          .attr("fill", "gray"); 
+//        circles.exit()
+
+        // print the data to the console (maybe useful for debugging)
+        console.log(g.selectAll("circle"))
+        ; // put semicolon before end of function
+        }
+
+      function type(d){
+        // Only reads in the points for which both CO2 and
+        // Energy data are available
+        if (d.CO2_emissions_per_cap > 0 && d.kWh_per_cap > 0) {
+            d.CO2_emissions_per_cap = +d.CO2_emissions_per_cap;
+            d.kWh_per_cap = +d.kWh_per_cap;
+            return d;
+        }
+      }
+
+      // d3.tsv() is an asynchronous method: the rest of your code is executed even while 
+      // JavaScript is simultaneously waiting for the file to finish downloading into the browser. 
+      // Make sure to reference your data only from within the callback function 
+      // (or from within other functions that you call within the callback function).
+      d3.tsv("./data/power_CO2.tsv", type, render);
+      // the online book suggests loading the data at the top and copying it to a var
+      // see "Handling Data Loading Errors" at 
+      // http://chimera.labs.oreilly.com/books/1230000000345/ch05.html#_data
+
+
+    </script>
+  </body>
+</html>
