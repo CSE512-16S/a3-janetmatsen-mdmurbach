@@ -168,7 +168,7 @@
 		      // the country will be the keys
                       .key(function(d) {return d.country;})
 		      // sort the nested data in ascending column name order
-                      .sortKeys(d3.ascending)
+                      .sortKeys(d3.ascending) 
 		      // .entries returns an array containing the property keys and 
 		      // values of the specified object 
                       .entries(rows);
@@ -281,6 +281,7 @@
         var circles = g.selectAll("circle").data(filtered);
         // create an actual svg circle for each object in circles.  
         circles.enter().append("circle");
+	// give the circles properties. 
         circles
           .attr("cx", function (d){
                     var index = d.values.find(function(f) { return f.series == xseries });
@@ -289,8 +290,7 @@
                     var index = d.values.find(function(f) { return f.series == yseries });
                     return yScale(index.y1990); })
           .attr("r", function (d){ return 5 })   
-
-          //Create the tooltip
+          //Create the tooltip for each circle
           .on("mouseover", function(d) {
               var index = d.values.find(function(f) { return f.series == xseries });
               tooltip.transition()
@@ -314,6 +314,7 @@
  
     }
     
+    // re-render data after drop-down menu is selected.
     function x_menuChanged() {
         xseries = d3.event.target.value;  
         render(data)
