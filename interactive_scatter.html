@@ -179,47 +179,17 @@
 		     // the year will be the second key
                      .key(function(d) { return d.year; })
 		     // the country will be the second key
+                     // todo: sort keys  (Matt had something like .sortKeys(d3.ascending))
                      .key(function(d) {return d.country;})
-                     .entries(rows)
-                    
-                        
-//                     .key(function(d) {return d.country;})
-//                     // the series is the 3rd key.
-//                     .key(function(d) {return d.series;})
-//		     // sort the nested data in ascending column name order
-//                     .sortKeys(d3.ascending) 
-//		     // .entries returns an array containing the property keys and 
-//		     // values of the specified object 
-//                     .entries(rows)
-                    ;
+                     .entries(rows);
                   // print data for troubleshooting
                   console.log("print data right after loading")
                   console.log(data)
-//      var yseries = "Energy use per capita (kilograms of oil equivalent)";
-//      var xseries = "CO2 emissions per capita (metric tons)";
 
-
-//                  function getArrayByKeyValPair(array, key, value) {
-//                    for (var array_num in array) {
-//                          //console.log("array_num: " + array_num)
-//                      for (var key_name in array[array_num]) {
-//                        if (key_name == key){
-//                          console.log(key_name)
-//                          console.log(array[array_num][key_name])
-//                          if (array[key_name] == value) {
-//                            console.log("array for key " + key + ": ");
-//                            console.log(ay);
-//                            return array[array_num][key_name]
-//                          }
-//                        }
-//                      }
-//                    }
-//                  };
-                
-                  // simple demo of looping over keys
-                  for (i in Object.keys(data)){
-                    console.log(i)
-                  }
+//                  // simple demo of looping over keys
+//                  for (i in Object.keys(data)){
+//                    console.log(i)
+//                  }
         
                   function nestedObjectByKey(array, key_name, desired_value) {
                   // If you have [Object, Object, ...] and each Object has an
@@ -262,34 +232,34 @@
                   }
 
                   function findValue(year, country, series, value) {
-                  // return the object that corresponds to the desired year. 
-
-                  // Loop through all the years.  Will get one array per country. 
-                  for (obj_num in Object.keys(data)){ 
-                    //console.log(obj_num);
-                    // find the array for the right year. 
-                    //console.log('obj_num: ' + obj_num);
-                    //console.log(data[obj_num]);
-                    //year = data[obj_num]['key'];
-                    console.log('year: ' + year);
-                    // array_for_year = data[obj_num].values; 
-                    //array_for_year = getArrayByKeyValPair(data, "key", "1990"); 
-                    array_for_year = nestedObjectByKey(data, "key", year); 
-                    //console.log('array for year ' + year + ": " )
-                    //console.log(array_for_year)
-                    // Loop through each country, now that you've found the year. 
-                    // Find the array for the right country
-                    array_for_country = nestedObjectByKey(array_for_year, "key", "China")
-                    //console.log('array for country ' + country + ": " )
-                    //console.log(array_for_country)
-                    // Loop through each series. 
-                    // By now each series already has the right year and country. 
-                    found_value = valueFromFlatArray(array_for_country, "series", series, value)
-                    //console.log('value for ' + series + ": " )
-                    //console.log(found_value)
-                    return(found_value)
-                    }
-                  };
+                  // find the value from series:value in the raw data after wading through a 
+                  // year level (from nest) and a country level (from Nest).
+                    // Loop through all the years.  Will get one array per country. 
+                    for (obj_num in Object.keys(data)){ 
+                      //console.log(obj_num);
+                      // find the array for the right year. 
+                      //console.log('obj_num: ' + obj_num);
+                      //console.log(data[obj_num]);
+                      //year = data[obj_num]['key'];
+                      console.log('year: ' + year);
+                      // array_for_year = data[obj_num].values; 
+                      //array_for_year = getArrayByKeyValPair(data, "key", "1990"); 
+                      array_for_year = nestedObjectByKey(data, "key", year); 
+                      //console.log('array for year ' + year + ": " )
+                      //console.log(array_for_year)
+                      // Loop through each country, now that you've found the year. 
+                      // Find the array for the right country
+                      array_for_country = nestedObjectByKey(array_for_year, "key", "China")
+                      //console.log('array for country ' + country + ": " )
+                      //console.log(array_for_country)
+                      // Loop through each series. 
+                      // By now each series already has the right year and country. 
+                      found_value = valueFromFlatArray(array_for_country, "series", series, value)
+                      //console.log('value for ' + series + ": " )
+                      //console.log(found_value)
+                      return(found_value)
+                      }
+                    };
 
                   // test findValue function:
                   test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
