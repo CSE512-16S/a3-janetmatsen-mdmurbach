@@ -145,6 +145,9 @@
       var y_dropDown;
 
       var years;
+        
+      // todo: make year a int.  See type() function in test2_video.html
+      var plot_year = "1990";
       
       // d3 requests (like d3.csv) are asynchronous so it is best practice 
       // to wrap all of the code dependent on your external request within 
@@ -152,16 +155,17 @@
       // before executing.
       // ?? Do we have 2 callback functions? syntax: d3.csv(url[[, accessor], callback])
       // ?? how does this differ from test2_video.html, where we used a render function? 
-      d3.csv("./data/climate-data-wRegion.csv", function(row,i){
-		 // i is the row number. 
+      d3.csv("./data/climate-data-melted--debugging_set.csv", function(row,i){
+	    // i is the row number. 
             // test to remove aggregated data (world, eurozone, etc.)
             if(row["Country region"] != "Aggregates") {
                  return {
                      country: row["Country name"],
 		     // allows for selections by row.series
                      series: row["Series name"],
-                     y1990: +row["1990"],
-                     region: row["Country region"]
+                     year: +row["year"],
+                     value: +row["value"],
+//                     region: row["Country region"]
                  }
             }
 	    // ?? is rows a built-in iterator name for d3.csv ?? 
@@ -172,13 +176,127 @@
                    
 		      // create a nest operator (allows for nested key-value pairs)
                   data = d3.nest()
-		     // the country will be the keys
+		     // the year will be the second key
+                     .key(function(d) { return d.year; })
+		     // the country will be the second key
                      .key(function(d) {return d.country;})
-		     // sort the nested data in ascending column name order
-                     .sortKeys(d3.ascending) 
-		     // .entries returns an array containing the property keys and 
-		     // values of the specified object 
-                     .entries(rows);
+                     .entries(rows)
+                    
+                        
+//                     .key(function(d) {return d.country;})
+//                     // the series is the 3rd key.
+//                     .key(function(d) {return d.series;})
+//		     // sort the nested data in ascending column name order
+//                     .sortKeys(d3.ascending) 
+//		     // .entries returns an array containing the property keys and 
+//		     // values of the specified object 
+//                     .entries(rows)
+                    ;
+                  // print data for troubleshooting
+                  console.log("print data right after loading")
+                  console.log(data)
+//      var yseries = "Energy use per capita (kilograms of oil equivalent)";
+//      var xseries = "CO2 emissions per capita (metric tons)";
+
+
+//                  function getArrayByKeyValPair(array, key, value) {
+//                    for (var array_num in array) {
+//                          //console.log("array_num: " + array_num)
+//                      for (var key_name in array[array_num]) {
+//                        if (key_name == key){
+//                          console.log(key_name)
+//                          console.log(array[array_num][key_name])
+//                          if (array[key_name] == value) {
+//                            console.log("array for key " + key + ": ");
+//                            console.log(ay);
+//                            return array[array_num][key_name]
+//                          }
+//                        }
+//                      }
+//                    }
+//                  };
+                
+                  // simple demo of looping over keys
+                  for (i in Object.keys(data)){
+                    console.log(i)
+                  }
+        
+                  function nestedObjectByKey(array, key_name, desired_value) {
+                  // If you have [Object, Object, ...] and each Object has an
+                  // array of objects as its value (e.g. from d3.nest), 
+                  // you can use this function to get the object in the values 
+                  // array that has "key":desired_value
+                    object_nums = Object.keys(array)
+                    for (obj_num in object_nums){ 
+                      //console.log(obj_num);
+                      //console.log('obj_num: ' + obj_num);
+                      //console.log(array[obj_num]);
+                      found_value = array[obj_num][key_name];
+                      //console.log('candidate value: ' + found_value);
+                      //console.log(typeof desired_value)
+                      if (found_value.toString() == desired_value.toString()) {
+                        console.log("found array for sought value. (" + desired_value + ")");
+                        right_object =  array[obj_num]
+                        //console.log("return object: ")
+                        //console.log(right_array)
+                        // returns another list of objects!!
+                        return right_object.values
+                      };
+                     };
+                  };
+
+                  function valueFromFlatArray(array, target_key_name, target_key_value, output_key){
+                  // If you have array =  [Object, Object, ...], but each Object in that
+                  // array does *NOT* have an array as a value for that key, 
+                  // you can use this function to get the number stored in key "value"
+                    object_nums = Object.keys(array)
+                    console.log("loop over these object numbers:")
+                    console.log(object_nums)
+                    for (obj_num in object_nums){ 
+                      obj = array[obj_num]
+                      console.log(obj)
+                      if (obj[target_key_name] == target_key_value){
+                          return obj[output_key]
+                      }                      
+                    }
+                  }
+
+                  function findValue(year, country, series, value) {
+                  // return the object that corresponds to the desired year. 
+
+                  // Loop through all the years.  Will get one array per country. 
+                  for (obj_num in Object.keys(data)){ 
+                    //console.log(obj_num);
+                    // find the array for the right year. 
+                    //console.log('obj_num: ' + obj_num);
+                    //console.log(data[obj_num]);
+                    //year = data[obj_num]['key'];
+                    console.log('year: ' + year);
+                    // array_for_year = data[obj_num].values; 
+                    //array_for_year = getArrayByKeyValPair(data, "key", "1990"); 
+                    array_for_year = nestedObjectByKey(data, "key", year); 
+                    //console.log('array for year ' + year + ": " )
+                    //console.log(array_for_year)
+                    // Loop through each country, now that you've found the year. 
+                    // Find the array for the right country
+                    array_for_country = nestedObjectByKey(array_for_year, "key", "China")
+                    //console.log('array for country ' + country + ": " )
+                    //console.log(array_for_country)
+                    // Loop through each series. 
+                    // By now each series already has the right year and country. 
+                    found_value = valueFromFlatArray(array_for_country, "series", series, value)
+                    //console.log('value for ' + series + ": " )
+                    //console.log(found_value)
+                    return(found_value)
+                    }
+                  };
+
+                  // test findValue function:
+                  test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
+                  console.log(test)
+ 
+                  //console.table(JSON.stringify(data[0]["country"])) //['1990']['China'])
+
                   
 //		  // x-axis label
 //                  x_label = d3.select("body").append("label")
@@ -268,10 +386,10 @@
         
         xScale.domain(d3.extent(data, function (d) { 
                     var index = d.values.find(function(f) { return f.series == xseries});
-                    return index.y1990; }));
+                    return index.year[xseries]; })); // Need to get all the way to the data
         yScale.domain(d3.extent(data, function (d) { 
                     var index = d.values.find(function(f) { return f.series == yseries});
-                    return index.y1990; }));
+                    return index.year[yseries]; }));
                     
         yAxisLabel.text(yseries)
         xAxisLabel.text(xseries)
@@ -344,8 +462,8 @@
 //              .style("text-anchor", "begin")
 //              .text(function(d) { return d; });
 
-	// print the data to the console (useful for debugging)
-        console.log(g.selectAll("circle"))
+//	// print the data to the console (useful for debugging)
+//        console.log(g.selectAll("circle"))
 
 //	// update the graphic upon menu selection
 //        x_dropDown.on("change", x_menuChanged);
