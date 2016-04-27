@@ -1,0 +1,581 @@
+Country code,Country name,Country region,Series code,Series name,SCALE,year,value
+CHN,China,East Asia & Pacific,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1990,1.38
+FRA,France,Europe & Central Asia,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1990,2.07
+NZL,New Zealand,East Asia & Pacific,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1990,2.74
+USA,United States,North America,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1990,1.72
+WLD,World,Aggregates,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1990,1.60
+CHN,China,East Asia & Pacific,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1990,..
+FRA,France,Europe & Central Asia,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1990,..
+NZL,New Zealand,East Asia & Pacific,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1990,..
+USA,United States,North America,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1990,..
+WLD,World,Aggregates,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1990,..
+CHN,China,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,4324.60
+FRA,France,Europe & Central Asia,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,6082.60
+NZL,New Zealand,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,5033.90
+USA,United States,North America,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,4755.10
+WLD,World,Aggregates,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,2882.32
+CHN,China,East Asia & Pacific,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1990,0.98
+FRA,France,Europe & Central Asia,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1990,1.06
+NZL,New Zealand,East Asia & Pacific,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1990,3.90
+USA,United States,North America,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1990,0.84
+WLD,World,Aggregates,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1990,1.01
+CHN,China,East Asia & Pacific,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1990,..
+FRA,France,Europe & Central Asia,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1990,..
+NZL,New Zealand,East Asia & Pacific,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1990,..
+USA,United States,North America,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1990,..
+WLD,World,Aggregates,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1990,..
+CHN,China,East Asia & Pacific,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1990,690.67
+FRA,France,Europe & Central Asia,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1990,158.32
+NZL,New Zealand,East Asia & Pacific,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1990,196.78
+USA,United States,North America,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1990,240.29
+WLD,World,Aggregates,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1990,237.22
+CHN,China,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,760.19
+FRA,France,Europe & Central Asia,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,3848.01
+NZL,New Zealand,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,3719.64
+USA,United States,North America,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,7671.55
+WLD,World,Aggregates,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,1669.28
+CHN,China,East Asia & Pacific,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1990,2460744.02
+FRA,France,Europe & Central Asia,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1990,399028.27
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1990,24022.52
+USA,United States,North America,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1990,4879376.21
+WLD,World,Aggregates,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1990,22529936.00
+CHN,China,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,2.17
+FRA,France,Europe & Central Asia,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,6.86
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,6.97
+USA,United States,North America,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,19.55
+WLD,World,Aggregates,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,4.27
+CHN,China,East Asia & Pacific,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1990,1969.46
+FRA,France,Europe & Central Asia,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1990,282.16
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1990,368.58
+USA,United States,North America,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1990,612.26
+WLD,World,Aggregates,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1990,627.86
+CHN,China,East Asia & Pacific,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1990,12054.30
+FRA,France,Europe & Central Asia,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1990,9891.80
+NZL,New Zealand,East Asia & Pacific,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1990,941.40
+USA,United States,North America,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1990,92595.50
+WLD,World,Aggregates,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1990,325579.70
+CHN,China,East Asia & Pacific,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1990,1037310.80
+FRA,France,Europe & Central Asia,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1990,77468.60
+NZL,New Zealand,East Asia & Pacific,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1990,26666.70
+USA,United States,North America,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1990,640428.40
+WLD,World,Aggregates,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1990,6716508.70
+CHN,China,East Asia & Pacific,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1990,314524.30
+FRA,France,Europe & Central Asia,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1990,70649.40
+NZL,New Zealand,East Asia & Pacific,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1990,10467.20
+USA,United States,North America,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1990,311677.50
+WLD,World,Aggregates,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1990,2696213.20
+CHN,China,East Asia & Pacific,EN.CLC.AERT,Annex-I emissions reduction target,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.AERT,Annex-I emissions reduction target,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.AERT,Annex-I emissions reduction target,Text,1990,
+USA,United States,North America,EN.CLC.AERT,Annex-I emissions reduction target,Text,1990,
+WLD,World,Aggregates,EN.CLC.AERT,Annex-I emissions reduction target,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1990,..
+FRA,France,Europe & Central Asia,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1990,..
+NZL,New Zealand,East Asia & Pacific,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1990,..
+USA,United States,North America,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1990,..
+WLD,World,Aggregates,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1990,..
+CHN,China,East Asia & Pacific,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1990,..
+FRA,France,Europe & Central Asia,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1990,-39.69863028
+NZL,New Zealand,East Asia & Pacific,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1990,-23.45107498
+USA,United States,North America,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1990,-846.5548779
+WLD,World,Aggregates,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1990,..
+CHN,China,East Asia & Pacific,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1990,
+USA,United States,North America,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1990,
+WLD,World,Aggregates,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1990,
+USA,United States,North America,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1990,
+WLD,World,Aggregates,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1990,
+USA,United States,North America,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1990,
+WLD,World,Aggregates,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1990,
+USA,United States,North America,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1990,
+WLD,World,Aggregates,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1990,
+USA,United States,North America,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1990,
+WLD,World,Aggregates,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1990,..
+FRA,France,Europe & Central Asia,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1990,..
+NZL,New Zealand,East Asia & Pacific,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1990,..
+USA,United States,North America,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1990,..
+WLD,World,Aggregates,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1990,..
+CHN,China,East Asia & Pacific,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1990,
+USA,United States,North America,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1990,
+WLD,World,Aggregates,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.NAMA,NAMA submission,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.NAMA,NAMA submission,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.NAMA,NAMA submission,Text,1990,
+USA,United States,North America,EN.CLC.NAMA,NAMA submission,Text,1990,
+WLD,World,Aggregates,EN.CLC.NAMA,NAMA submission,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.NAPA,NAPA submission,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.NAPA,NAPA submission,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.NAPA,NAPA submission,Text,1990,
+USA,United States,North America,EN.CLC.NAPA,NAPA submission,Text,1990,
+WLD,World,Aggregates,EN.CLC.NAPA,NAPA submission,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1990,
+USA,United States,North America,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1990,
+WLD,World,Aggregates,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1990,
+USA,United States,North America,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1990,
+WLD,World,Aggregates,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1990,
+USA,United States,North America,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1990,
+WLD,World,Aggregates,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1990,
+USA,United States,North America,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1990,
+WLD,World,Aggregates,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1990,
+USA,United States,North America,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1990,
+WLD,World,Aggregates,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1990,
+CHN,China,East Asia & Pacific,EN.CLC.RNET,Renewable energy target,Text,1990,
+FRA,France,Europe & Central Asia,EN.CLC.RNET,Renewable energy target,Text,1990,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.RNET,Renewable energy target,Text,1990,
+USA,United States,North America,EN.CLC.RNET,Renewable energy target,Text,1990,
+WLD,World,Aggregates,EN.CLC.RNET,Renewable energy target,Text,1990,
+CHN,China,East Asia & Pacific,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1990,7.64
+FRA,France,Europe & Central Asia,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1990,4.01
+NZL,New Zealand,East Asia & Pacific,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1990,12.33
+USA,United States,North America,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1990,4.17
+WLD,World,Aggregates,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1990,6.60
+CHN,China,East Asia & Pacific,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1990,8.97
+FRA,France,Europe & Central Asia,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1990,22.10
+NZL,New Zealand,East Asia & Pacific,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1990,25.22
+USA,United States,North America,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1990,41.56
+WLD,World,Aggregates,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1990,16.81
+CHN,China,East Asia & Pacific,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1990,17.77
+FRA,France,Europe & Central Asia,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1990,..
+NZL,New Zealand,East Asia & Pacific,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1990,..
+USA,United States,North America,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1990,16.39
+WLD,World,Aggregates,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1990,..
+CHN,China,East Asia & Pacific,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1990,13.54
+FRA,France,Europe & Central Asia,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1990,10.13
+NZL,New Zealand,East Asia & Pacific,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1990,25.03
+USA,United States,North America,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1990,14.78
+WLD,World,Aggregates,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1990,9.13
+CHN,China,East Asia & Pacific,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1990,..
+FRA,France,Europe & Central Asia,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1990,..
+USA,United States,North America,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1990,..
+WLD,World,Aggregates,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1990,..
+CHN,China,East Asia & Pacific,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1990,..
+FRA,France,Europe & Central Asia,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1990,..
+USA,United States,North America,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1990,..
+WLD,World,Aggregates,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1990,..
+CHN,China,East Asia & Pacific,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1990,..
+FRA,France,Europe & Central Asia,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1990,..
+USA,United States,North America,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1990,..
+WLD,World,Aggregates,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1990,..
+CHN,China,East Asia & Pacific,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1990,173000000.00
+FRA,France,Europe & Central Asia,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1990,..
+USA,United States,North America,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1990,..
+WLD,World,Aggregates,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1990,..
+CHN,China,East Asia & Pacific,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1990,..
+FRA,France,Europe & Central Asia,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1990,..
+USA,United States,North America,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1990,..
+WLD,World,Aggregates,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1990,..
+CHN,China,East Asia & Pacific,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1990,..
+FRA,France,Europe & Central Asia,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1990,..
+USA,United States,North America,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1990,..
+WLD,World,Aggregates,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1990,..
+CHN,China,East Asia & Pacific,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1990,..
+FRA,France,Europe & Central Asia,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1990,..
+NZL,New Zealand,East Asia & Pacific,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1990,57.00
+USA,United States,North America,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1990,..
+WLD,World,Aggregates,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1990,..
+CHN,China,East Asia & Pacific,NY.GDP.MKTP.CD,GDP ($),0,1990,356936901183.93
+FRA,France,Europe & Central Asia,NY.GDP.MKTP.CD,GDP ($),0,1990,1244163353812.79
+NZL,New Zealand,East Asia & Pacific,NY.GDP.MKTP.CD,GDP ($),0,1990,44503568893.80
+USA,United States,North America,NY.GDP.MKTP.CD,GDP ($),0,1990,5750800000000.00
+WLD,World,Aggregates,NY.GDP.MKTP.CD,GDP ($),0,1990,21901397020277.10
+CHN,China,East Asia & Pacific,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1990,330.00
+FRA,France,Europe & Central Asia,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1990,20220.00
+NZL,New Zealand,East Asia & Pacific,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1990,12970.00
+USA,United States,North America,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1990,23260.00
+WLD,World,Aggregates,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1990,4079.48
+CHN,China,East Asia & Pacific,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1990,85.20
+FRA,France,Europe & Central Asia,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1990,102.89
+NZL,New Zealand,East Asia & Pacific,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1990,99.38
+USA,United States,North America,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1990,99.30
+WLD,World,Aggregates,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1990,..
+CHN,China,East Asia & Pacific,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1990,104.40
+FRA,France,Europe & Central Asia,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1990,100.92
+NZL,New Zealand,East Asia & Pacific,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1990,..
+USA,United States,North America,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1990,..
+WLD,World,Aggregates,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1990,..
+CHN,China,East Asia & Pacific,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1990,48.30
+FRA,France,Europe & Central Asia,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1990,8.80
+NZL,New Zealand,East Asia & Pacific,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1990,11.10
+USA,United States,North America,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1990,11.30
+WLD,World,Aggregates,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1990,89.87
+CHN,China,East Asia & Pacific,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1990,67.00
+FRA,France,Europe & Central Asia,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1990,100.00
+NZL,New Zealand,East Asia & Pacific,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1990,100.00
+USA,United States,North America,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1990,99.00
+WLD,World,Aggregates,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1990,76.78
+CHN,China,East Asia & Pacific,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1990,..
+FRA,France,Europe & Central Asia,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1990,..
+NZL,New Zealand,East Asia & Pacific,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1990,..
+USA,United States,North America,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1990,..
+WLD,World,Aggregates,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1990,..
+CHN,China,East Asia & Pacific,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1990,1.55
+FRA,France,Europe & Central Asia,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1990,3.10
+NZL,New Zealand,East Asia & Pacific,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1990,1.90
+USA,United States,North America,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1990,1.80
+WLD,World,Aggregates,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1990,1.21
+CHN,China,East Asia & Pacific,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1990,..
+FRA,France,Europe & Central Asia,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1990,..
+NZL,New Zealand,East Asia & Pacific,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1990,..
+USA,United States,North America,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1990,..
+WLD,World,Aggregates,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1990,..
+CHN,China,East Asia & Pacific,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1990,41.00
+FRA,France,Europe & Central Asia,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1990,100.00
+NZL,New Zealand,East Asia & Pacific,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1990,..
+USA,United States,North America,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1990,100.00
+WLD,World,Aggregates,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1990,52.41
+CHN,China,East Asia & Pacific,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1990,12.60
+FRA,France,Europe & Central Asia,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1990,..
+NZL,New Zealand,East Asia & Pacific,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1990,..
+USA,United States,North America,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1990,..
+WLD,World,Aggregates,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1990,..
+CHN,China,East Asia & Pacific,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1990,60.18
+FRA,France,Europe & Central Asia,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1990,..
+NZL,New Zealand,East Asia & Pacific,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1990,..
+USA,United States,North America,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1990,..
+WLD,World,Aggregates,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1990,..
+CHN,China,East Asia & Pacific,SP.POP.GROW,Population growth (annual %),0,1990,1.47
+FRA,France,Europe & Central Asia,SP.POP.GROW,Population growth (annual %),0,1990,0.50
+NZL,New Zealand,East Asia & Pacific,SP.POP.GROW,Population growth (annual %),0,1990,1.46
+USA,United States,North America,SP.POP.GROW,Population growth (annual %),0,1990,1.13
+WLD,World,Aggregates,SP.POP.GROW,Population growth (annual %),0,1990,1.71
+CHN,China,East Asia & Pacific,SP.POP.TOTL,Population,0,1990,1135185000.00
+FRA,France,Europe & Central Asia,SP.POP.TOTL,Population,0,1990,58183174.00
+NZL,New Zealand,East Asia & Pacific,SP.POP.TOTL,Population,0,1990,3448000.00
+USA,United States,North America,SP.POP.TOTL,Population,0,1990,249623000.00
+WLD,World,Aggregates,SP.POP.TOTL,Population,0,1990,5272353133.90
+CHN,China,East Asia & Pacific,SP.URB.GROW,Urban population growth (annual %),0,1990,4.73
+FRA,France,Europe & Central Asia,SP.URB.GROW,Urban population growth (annual %),0,1990,0.61
+NZL,New Zealand,East Asia & Pacific,SP.URB.GROW,Urban population growth (annual %),0,1990,1.70
+USA,United States,North America,SP.URB.GROW,Urban population growth (annual %),0,1990,1.34
+WLD,World,Aggregates,SP.URB.GROW,Urban population growth (annual %),0,1990,2.71
+CHN,China,East Asia & Pacific,SP.URB.TOTL,Urban population,0,1990,311040690.00
+FRA,France,Europe & Central Asia,SP.URB.TOTL,Urban population,0,1990,43113731.93
+NZL,New Zealand,East Asia & Pacific,SP.URB.TOTL,Urban population,0,1990,2920456.00
+USA,United States,North America,SP.URB.TOTL,Urban population,0,1990,187966119.00
+WLD,World,Aggregates,SP.URB.TOTL,Urban population,0,1990,2256120329.67
+CHN,China,East Asia & Pacific,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1991,..
+FRA,France,Europe & Central Asia,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1991,..
+NZL,New Zealand,East Asia & Pacific,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1991,..
+USA,United States,North America,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1991,..
+WLD,World,Aggregates,AG.LND.EL5M.ZS,Land area below 5m (% of land area),0,1991,..
+CHN,China,East Asia & Pacific,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1991,..
+FRA,France,Europe & Central Asia,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1991,..
+NZL,New Zealand,East Asia & Pacific,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1991,..
+USA,United States,North America,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1991,..
+WLD,World,Aggregates,AG.LND.IRIG.AG.ZS,Agricultural land under irrigation (% of total ag. land),0,1991,..
+CHN,China,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,4232.70
+FRA,France,Europe & Central Asia,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,6537.90
+NZL,New Zealand,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,5304.70
+USA,United States,North America,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,4510.20
+WLD,World,Aggregates,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,2873.13
+CHN,China,East Asia & Pacific,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1991,1.15
+FRA,France,Europe & Central Asia,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1991,1.22
+NZL,New Zealand,East Asia & Pacific,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1991,3.08
+USA,United States,North America,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1991,0.39
+WLD,World,Aggregates,BX.KLT.DINV.WD.GD.ZS,"Foreign direct investment, net inflows (% of GDP)",0,1991,0.75
+CHN,China,East Asia & Pacific,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1991,..
+FRA,France,Europe & Central Asia,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1991,..
+NZL,New Zealand,East Asia & Pacific,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1991,..
+USA,United States,North America,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1991,..
+WLD,World,Aggregates,EG.ELC.ACCS.ZS,Access to electricity (% of total population),0,1991,..
+CHN,China,East Asia & Pacific,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1991,627.92
+FRA,France,Europe & Central Asia,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1991,165.57
+NZL,New Zealand,East Asia & Pacific,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1991,205.57
+USA,United States,North America,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1991,242.89
+WLD,World,Aggregates,EG.USE.COMM.GD.PP.KD,"Energy use per units of GDP (kg oil eq./$1,000 of 2005 PPP $)",0,1991,236.59
+CHN,China,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,744.49
+FRA,France,Europe & Central Asia,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,4047.30
+NZL,New Zealand,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,3783.83
+USA,United States,North America,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,7631.52
+WLD,World,Aggregates,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,1659.26
+CHN,China,East Asia & Pacific,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1991,2584538.27
+FRA,France,Europe & Central Asia,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1991,427667.54
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1991,24458.89
+USA,United States,North America,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1991,4870238.04
+WLD,World,Aggregates,EN.ATM.CO2E.KT,"CO2 emissions, total (KtCO2)",0,1991,22867024.00
+CHN,China,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,2.25
+FRA,France,Europe & Central Asia,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,7.32
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,7.00
+USA,United States,North America,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,19.25
+WLD,World,Aggregates,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,4.27
+CHN,China,East Asia & Pacific,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1991,1894.26
+FRA,France,Europe & Central Asia,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1991,299.30
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1991,380.20
+USA,United States,North America,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1991,612.72
+WLD,World,Aggregates,EN.ATM.CO2E.PP.GD.KD,"CO2 emissions per units of GDP (kg/$1,000 of 2005 PPP $)",0,1991,628.94
+CHN,China,East Asia & Pacific,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1991,..
+FRA,France,Europe & Central Asia,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1991,..
+USA,United States,North America,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1991,..
+WLD,World,Aggregates,EN.ATM.GHGO.KT.CE,"Other GHG emissions, total (KtCO2e)",0,1991,..
+CHN,China,East Asia & Pacific,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1991,..
+FRA,France,Europe & Central Asia,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1991,..
+USA,United States,North America,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1991,..
+WLD,World,Aggregates,EN.ATM.METH.KT.CE,"Methane (CH4) emissions, total (KtCO2e)",0,1991,..
+CHN,China,East Asia & Pacific,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1991,..
+FRA,France,Europe & Central Asia,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1991,..
+USA,United States,North America,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1991,..
+WLD,World,Aggregates,EN.ATM.NOXE.KT.CE,"Nitrous oxide (N2O) emissions, total (KtCO2e)",0,1991,..
+CHN,China,East Asia & Pacific,EN.CLC.AERT,Annex-I emissions reduction target,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.AERT,Annex-I emissions reduction target,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.AERT,Annex-I emissions reduction target,Text,1991,
+USA,United States,North America,EN.CLC.AERT,Annex-I emissions reduction target,Text,1991,
+WLD,World,Aggregates,EN.CLC.AERT,Annex-I emissions reduction target,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1991,..
+FRA,France,Europe & Central Asia,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1991,..
+NZL,New Zealand,East Asia & Pacific,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1991,..
+USA,United States,North America,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1991,..
+WLD,World,Aggregates,EN.CLC.DRSK.XQ,Disaster risk reduction progress score (1-5 scale; 5=best),0,1991,..
+CHN,China,East Asia & Pacific,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1991,..
+FRA,France,Europe & Central Asia,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1991,-35.61733938
+NZL,New Zealand,East Asia & Pacific,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1991,-24.11641238
+USA,United States,North America,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1991,-818.6797311
+WLD,World,Aggregates,EN.CLC.GHGR.MT.CE,GHG net emissions/removals by LUCF (MtCO2e),0,1991,..
+CHN,China,East Asia & Pacific,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1991,
+USA,United States,North America,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1991,
+WLD,World,Aggregates,EN.CLC.HCDM,Hosted Clean Development Mechanism (CDM) projects,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1991,
+USA,United States,North America,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1991,
+WLD,World,Aggregates,EN.CLC.HJIP,Hosted Joint Implementation (JI) projects,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1991,
+USA,United States,North America,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1991,
+WLD,World,Aggregates,EN.CLC.HPPT.MM,"Average annual precipitation (1961-1990, mm)",Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1991,
+USA,United States,North America,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1991,
+WLD,World,Aggregates,EN.CLC.ICER,Issued Certified Emission Reductions (CERs) from CDM (thousands),Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1991,
+USA,United States,North America,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1991,
+WLD,World,Aggregates,EN.CLC.IERU,Issued Emission Reduction Units (ERUs) from JI (thousands),Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1991,..
+FRA,France,Europe & Central Asia,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1991,..
+USA,United States,North America,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1991,..
+WLD,World,Aggregates,EN.CLC.MDAT.ZS,"Droughts, floods, extreme temps (% pop. avg. 1990-2009)",0,1991,..
+CHN,China,East Asia & Pacific,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1991,
+USA,United States,North America,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1991,
+WLD,World,Aggregates,EN.CLC.MMDT.C,"Average daily min/max temperature (1961-1990, Celsius)",Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.NAMA,NAMA submission,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.NAMA,NAMA submission,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.NAMA,NAMA submission,Text,1991,
+USA,United States,North America,EN.CLC.NAMA,NAMA submission,Text,1991,
+WLD,World,Aggregates,EN.CLC.NAMA,NAMA submission,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.NAPA,NAPA submission,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.NAPA,NAPA submission,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.NAPA,NAPA submission,Text,1991,
+USA,United States,North America,EN.CLC.NAPA,NAPA submission,Text,1991,
+WLD,World,Aggregates,EN.CLC.NAPA,NAPA submission,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1991,
+USA,United States,North America,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1991,
+WLD,World,Aggregates,EN.CLC.NCOM,Latest UNFCCC national communication,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1991,
+USA,United States,North America,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1991,
+WLD,World,Aggregates,EN.CLC.PCAT.C,"Projected annual temperature change (2045-2065, Celsius)",Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1991,
+USA,United States,North America,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1991,
+WLD,World,Aggregates,EN.CLC.PCCC,Projected change in annual cool days/cold nights,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1991,
+USA,United States,North America,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1991,
+WLD,World,Aggregates,EN.CLC.PCHW,Projected change in annual hot days/warm nights,Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1991,
+USA,United States,North America,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1991,
+WLD,World,Aggregates,EN.CLC.PCPT.MM,"Projected annual precipitation change (2045-2065, mm)",Text,1991,
+CHN,China,East Asia & Pacific,EN.CLC.RNET,Renewable energy target,Text,1991,
+FRA,France,Europe & Central Asia,EN.CLC.RNET,Renewable energy target,Text,1991,
+NZL,New Zealand,East Asia & Pacific,EN.CLC.RNET,Renewable energy target,Text,1991,
+USA,United States,North America,EN.CLC.RNET,Renewable energy target,Text,1991,
+WLD,World,Aggregates,EN.CLC.RNET,Renewable energy target,Text,1991,
+CHN,China,East Asia & Pacific,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1991,..
+FRA,France,Europe & Central Asia,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1991,..
+NZL,New Zealand,East Asia & Pacific,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1991,..
+USA,United States,North America,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1991,..
+WLD,World,Aggregates,EN.POP.EL5M.ZS,Population below 5m (% of total),0,1991,..
+CHN,China,East Asia & Pacific,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1991,9.28
+FRA,France,Europe & Central Asia,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1991,22.10
+NZL,New Zealand,East Asia & Pacific,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1991,25.33
+USA,United States,North America,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1991,41.65
+WLD,World,Aggregates,EN.URB.MCTY.TL.ZS,Population in urban agglomerations >1million (%),0,1991,16.94
+CHN,China,East Asia & Pacific,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1991,..
+FRA,France,Europe & Central Asia,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1991,..
+NZL,New Zealand,East Asia & Pacific,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1991,..
+USA,United States,North America,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1991,..
+WLD,World,Aggregates,ER.H2O.FWTL.ZS,Annual freshwater withdrawals (% of internal resources),0,1991,..
+CHN,China,East Asia & Pacific,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1991,13.57
+FRA,France,Europe & Central Asia,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1991,10.40
+NZL,New Zealand,East Asia & Pacific,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1991,25.10
+USA,United States,North America,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1991,14.78
+WLD,World,Aggregates,ER.LND.PTLD.ZS,Nationally terrestrial protected areas (% of total land area),0,1991,9.34
+CHN,China,East Asia & Pacific,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1991,..
+FRA,France,Europe & Central Asia,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1991,..
+USA,United States,North America,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1991,..
+WLD,World,Aggregates,IC.BUS.EASE.XQ,Ease of doing business (ranking 1-183; 1=best),0,1991,..
+CHN,China,East Asia & Pacific,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1991,..
+FRA,France,Europe & Central Asia,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1991,..
+USA,United States,North America,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1991,..
+WLD,World,Aggregates,IE.PPI.ENGY.CD,Invest. in energy w/ private participation ($),0,1991,..
+CHN,China,East Asia & Pacific,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1991,..
+FRA,France,Europe & Central Asia,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1991,..
+USA,United States,North America,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1991,..
+WLD,World,Aggregates,IE.PPI.TELE.CD,Invest. in telecoms w/ private participation ($),0,1991,..
+CHN,China,East Asia & Pacific,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1991,2378800000.00
+FRA,France,Europe & Central Asia,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1991,..
+USA,United States,North America,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1991,..
+WLD,World,Aggregates,IE.PPI.TRAN.CD,Invest. in transport w/ private participation ($),0,1991,..
+CHN,China,East Asia & Pacific,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1991,..
+FRA,France,Europe & Central Asia,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1991,..
+USA,United States,North America,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1991,..
+WLD,World,Aggregates,IE.PPI.WATR.CD,Invest. in water/sanit. w/ private participation ($),0,1991,..
+CHN,China,East Asia & Pacific,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1991,..
+FRA,France,Europe & Central Asia,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1991,..
+USA,United States,North America,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1991,..
+WLD,World,Aggregates,IQ.CPA.PUBS.XQ,Public sector mgmt & institutions avg. (1-6 scale; 6=best),0,1991,..
+CHN,China,East Asia & Pacific,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1991,..
+FRA,France,Europe & Central Asia,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1991,..
+NZL,New Zealand,East Asia & Pacific,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1991,58.00
+USA,United States,North America,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1991,..
+WLD,World,Aggregates,IS.ROD.PAVE.ZS,Paved roads (% of total roads),0,1991,..
+CHN,China,East Asia & Pacific,NY.GDP.MKTP.CD,GDP ($),0,1991,379468656246.25
+FRA,France,Europe & Central Asia,NY.GDP.MKTP.CD,GDP ($),0,1991,1245405883036.86
+NZL,New Zealand,East Asia & Pacific,NY.GDP.MKTP.CD,GDP ($),0,1991,41820222974.34
+USA,United States,North America,NY.GDP.MKTP.CD,GDP ($),0,1991,5930700000000.00
+WLD,World,Aggregates,NY.GDP.MKTP.CD,GDP ($),0,1991,22972298453475.60
+CHN,China,East Asia & Pacific,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1991,350.00
+FRA,France,Europe & Central Asia,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1991,21020.00
+NZL,New Zealand,East Asia & Pacific,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1991,11910.00
+USA,United States,North America,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1991,23460.00
+WLD,World,Aggregates,NY.GNP.PCAP.CD,GNI per capita (Atlas $),0,1991,4204.24
+CHN,China,East Asia & Pacific,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1991,86.41
+FRA,France,Europe & Central Asia,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1991,102.30
+NZL,New Zealand,East Asia & Pacific,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1991,99.83
+USA,United States,North America,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1991,99.66
+WLD,World,Aggregates,SE.ENR.PRSC.FM.ZS,Ratio of girls to boys in primary & secondary school (%),0,1991,86.68
+CHN,China,East Asia & Pacific,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1991,107.02
+FRA,France,Europe & Central Asia,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1991,105.89
+NZL,New Zealand,East Asia & Pacific,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1991,..
+USA,United States,North America,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1991,..
+WLD,World,Aggregates,SE.PRM.CMPT.ZS,"Primary completion rate, total (% of relevant age group)",0,1991,79.20
+CHN,China,East Asia & Pacific,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1991,47.40
+FRA,France,Europe & Central Asia,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1991,8.40
+NZL,New Zealand,East Asia & Pacific,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1991,10.50
+USA,United States,North America,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1991,10.90
+WLD,World,Aggregates,SH.DYN.MORT,"Under-five mortality rate (per 1,000)",0,1991,88.69
+CHN,China,East Asia & Pacific,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1991,..
+FRA,France,Europe & Central Asia,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1991,..
+NZL,New Zealand,East Asia & Pacific,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1991,..
+USA,United States,North America,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1991,..
+WLD,World,Aggregates,SH.H2O.SAFE.ZS,Access to improved water source (% of total pop.),0,1991,..
+CHN,China,East Asia & Pacific,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1991,..
+FRA,France,Europe & Central Asia,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1991,..
+USA,United States,North America,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1991,..
+WLD,World,Aggregates,SH.MED.NUMW.P3,"Nurses and midwives (per 1,000 people)",0,1991,..
+CHN,China,East Asia & Pacific,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1991,1.55
+FRA,France,Europe & Central Asia,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1991,3.10
+NZL,New Zealand,East Asia & Pacific,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1991,1.90
+USA,United States,North America,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1991,1.90
+WLD,World,Aggregates,SH.MED.PHYS.ZS,"Physicians (per 1,000 people)",0,1991,..
+CHN,China,East Asia & Pacific,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1991,..
+FRA,France,Europe & Central Asia,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1991,..
+USA,United States,North America,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1991,..
+WLD,World,Aggregates,SH.MLR.INCD,"Malaria incidence rate (per 100,000 people)",0,1991,..
+CHN,China,East Asia & Pacific,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1991,..
+FRA,France,Europe & Central Asia,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1991,..
+NZL,New Zealand,East Asia & Pacific,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1991,..
+USA,United States,North America,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1991,..
+WLD,World,Aggregates,SH.STA.ACSN,Access to improved sanitation (% of total pop.),0,1991,..
+CHN,China,East Asia & Pacific,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1991,..
+FRA,France,Europe & Central Asia,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1991,..
+NZL,New Zealand,East Asia & Pacific,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1991,..
+USA,United States,North America,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1991,..
+WLD,World,Aggregates,SH.STA.MALN.ZS,"Child malnutrition, underweight (% of under age 5)",0,1991,..
+CHN,China,East Asia & Pacific,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1991,..
+FRA,France,Europe & Central Asia,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1991,..
+NZL,New Zealand,East Asia & Pacific,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1991,..
+USA,United States,North America,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1991,..
+WLD,World,Aggregates,SI.POV.DDAY,Population living below $1.25 a day (% of total),0,1991,..
+CHN,China,East Asia & Pacific,SP.POP.GROW,Population growth (annual %),0,1991,1.36
+FRA,France,Europe & Central Asia,SP.POP.GROW,Population growth (annual %),0,1991,0.47
+NZL,New Zealand,East Asia & Pacific,SP.POP.GROW,Population growth (annual %),0,1991,1.36
+USA,United States,North America,SP.POP.GROW,Population growth (annual %),0,1991,1.34
+WLD,World,Aggregates,SP.POP.GROW,Population growth (annual %),0,1991,1.63
+CHN,China,East Asia & Pacific,SP.POP.TOTL,Population,0,1991,1150780000.00
+FRA,France,Europe & Central Asia,SP.POP.TOTL,Population,0,1991,58454894.00
+NZL,New Zealand,East Asia & Pacific,SP.POP.TOTL,Population,0,1991,3495100.00
+USA,United States,North America,SP.POP.TOTL,Population,0,1991,252981000.00
+WLD,World,Aggregates,SP.POP.TOTL,Population,0,1991,5358101565.85
+CHN,China,East Asia & Pacific,SP.URB.GROW,Urban population growth (annual %),0,1991,4.24
+FRA,France,Europe & Central Asia,SP.URB.GROW,Urban population growth (annual %),0,1991,0.68
+NZL,New Zealand,East Asia & Pacific,SP.URB.GROW,Urban population growth (annual %),0,1991,1.50
+USA,United States,North America,SP.URB.GROW,Urban population growth (annual %),0,1991,1.87
+WLD,World,Aggregates,SP.URB.GROW,Urban population growth (annual %),0,1991,2.48
+CHN,China,East Asia & Pacific,SP.URB.TOTL,Urban population,0,1991,324519960.00
+FRA,France,Europe & Central Asia,SP.URB.TOTL,Urban population,0,1991,43408604.28
+NZL,New Zealand,East Asia & Pacific,SP.URB.TOTL,Urban population,0,1991,2964543.82
+USA,United States,North America,SP.URB.TOTL,Urban population,0,1991,191506617.00
+WLD,World,Aggregates,SP.URB.TOTL,Urban population,0,1991,2312121585.35
