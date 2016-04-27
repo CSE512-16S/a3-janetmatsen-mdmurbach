@@ -262,8 +262,19 @@
         
         filtered = data.filter(isSeries(xseries, yseries));
         
+	// d3.extent finds the minimum and maximum value in an array
         xScale.domain(d3.extent(data, function (d) { 
-                    var index = d.values.find(function(f) { return f.series == xseries});
+		    // index and f are objects
+		    // ex. from console: Object {country: "United Kingdom", 
+		    //				series: "CO2 emissions per capita (metric tons)", y1990: 9.96, ...
+		    // find() method returns the value of the first element in an array that 
+		    // pass a test (provided as a function)
+                    var index = d.values.find(function(f) { 
+			//console.log(f)
+			return f.series == xseries});
+		    //console.log(index)
+		    // now we isolate single values. (e.g. index.y1990 = 3.12)
+		    //console.log(index.y1990)
                     return index.y1990; }));
         yScale.domain(d3.extent(data, function (d) { 
                     var index = d.values.find(function(f) { return f.series == yseries});
