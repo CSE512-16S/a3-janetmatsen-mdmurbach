@@ -151,6 +151,8 @@
       // ?? how does this differ from test2_video.html, where we used a render function? 
       d3.csv("./data/climate-data-wRegion.csv", function(row,i){
 		 // i is the row number. 
+            // test to remove aggregated data (world, eurozone, etc.)
+            if(row["Country region"] != "Aggregates") {
                  return {
                      country: row["Country name"],
 		     // allows for selections by row.series
@@ -158,6 +160,7 @@
                      y1990: +row["1990"],
                      region: row["Country region"]
                  }
+            }
 	    // ?? is rows a built-in thing to iterate over in d3.csv ?? 
             }, function(error,rows){
                    if(error){
@@ -261,13 +264,9 @@
         
         xScale.domain(d3.extent(data, function (d) { 
                     var index = d.values.find(function(f) { return f.series == xseries});
-                    //console.log(index.country);
-                    //console.log(index.y1990); 
                     return index.y1990; }));
         yScale.domain(d3.extent(data, function (d) { 
                     var index = d.values.find(function(f) { return f.series == yseries});
-                    //console.log(index.country);
-                    //console.log(index.y1990); 
                     return index.y1990; }));
                     
         yAxisLabel.text(yseries)
@@ -288,6 +287,7 @@
         circles.enter().append("circle");
 	// give the circles properties. 
         circles
+          .transition().duration(800)
           .attr("cx", function (d){
                     var index = d.values.find(function(f) { return f.series == xseries });
                     return xScale(index.y1990); })
@@ -298,11 +298,12 @@
           .attr("fill", function (d) { 
                     var index = d.values.find(function(f) { 
                     return f.series == yseries });
-                    return colorScale(index.region); })
+                    return colorScale(index.region); });
           //Create the tooltip for each circle
-          .on("mouseover", function(d) {
+          
+          circles.on("mouseover", function(d) {
               var index = d.values.find(function(f) { return f.series == xseries });
-              tooltip.transition()
+            tooltip.transition()
                    .duration(200)
                    .style("opacity", .9);
 
