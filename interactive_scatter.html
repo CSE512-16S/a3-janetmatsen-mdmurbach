@@ -196,6 +196,7 @@
 
                   temp_year = 1991;
                   data_year = nestedObjectByKey(data, "key", temp_year);
+                  console.log(data_year)
                   
 		  // x-axis label
                   x_label = d3.select("body").append("label")
@@ -359,7 +360,9 @@
         temp_year = 1991;
         data_year = nestedObjectByKey(data, "key", temp_year);
         
-        filtered = data_year.filter(isSeries(xseries, yseries));
+        // TODO: turn filtering back on.  Was breaking dropdowns 4/27 7PM. 
+        //filtered = data_year.filter(isSeries(xseries, yseries));
+        filtered = data_year
         
         // print the data I grabbed. 
         //console.table(JSON.stringify(data_year))
@@ -459,13 +462,13 @@
         console.log("x menu changed")
         console.log("d3.event.target.value: ", d3.event.target.value)
         xseries = d3.event.target.value;  
-        render(data_year)
+        render(data) // must be data, not data_year  (JM 160427 7pm)
     }
     
     function y_menuChanged() {
         console.log("y menu changed")
         yseries = d3.event.target.value;  
-        render(data_year)
+        render(data)  // must be data, not data_year   (JM 160427 7pm)
     }
     </script>
   </body>
