@@ -1,31 +1,31 @@
 Country code,Country name,Country region,Series code,Series name,SCALE,year,value
-CHN,China,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,4324.60
-FRA,France,Europe & Central Asia,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,6082.60
-NZL,New Zealand,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,5033.90
-USA,United States,North America,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,4755.10
+CHN,China,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,4324.6
+NZL,New Zealand,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,5033.9
+PRI,Puerto Rico,Latin America & Caribbean,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,1080.0
+USA,United States,North America,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,4755.1
 WLD,World,Aggregates,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1990,2882.32
 CHN,China,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,760.19
-FRA,France,Europe & Central Asia,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,3848.01
 NZL,New Zealand,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,3719.64
+PRI,Puerto Rico,Latin America & Caribbean,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,
 USA,United States,North America,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,7671.55
 WLD,World,Aggregates,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1990,1669.28
 CHN,China,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,2.17
-FRA,France,Europe & Central Asia,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,6.86
 NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,6.97
+PRI,Puerto Rico,Latin America & Caribbean,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,
 USA,United States,North America,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,19.55
 WLD,World,Aggregates,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1990,4.27
-CHN,China,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,4232.70
-FRA,France,Europe & Central Asia,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,6537.90
-NZL,New Zealand,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,5304.70
-USA,United States,North America,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,4510.20
+CHN,China,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,4232.7
+NZL,New Zealand,East Asia & Pacific,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,5304.7
+PRI,Puerto Rico,Latin America & Caribbean,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,1149.4
+USA,United States,North America,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,4510.2
 WLD,World,Aggregates,AG.YLD.CREL.KG,Cereal yield (kg per hectare),0,1991,2873.13
 CHN,China,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,744.49
-FRA,France,Europe & Central Asia,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,4047.30
 NZL,New Zealand,East Asia & Pacific,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,3783.83
+PRI,Puerto Rico,Latin America & Caribbean,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,
 USA,United States,North America,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,7631.52
 WLD,World,Aggregates,EG.USE.PCAP.KG.OE,Energy use per capita (kilograms of oil equivalent),0,1991,1659.26
 CHN,China,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,2.25
-FRA,France,Europe & Central Asia,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,7.32
-NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,7.00
+NZL,New Zealand,East Asia & Pacific,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,7.0
+PRI,Puerto Rico,Latin America & Caribbean,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,
 USA,United States,North America,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,19.25
 WLD,World,Aggregates,EN.ATM.CO2E.PC,CO2 emissions per capita (metric tons),0,1991,4.27
