@@ -1,1 +1,4 @@
 *.swp
+# some vim thing:
+.swo  
+.ipynb_checkpoints/

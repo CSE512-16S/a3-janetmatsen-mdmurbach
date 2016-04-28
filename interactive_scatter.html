@@ -2,8 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>D3 Example</title>
+    <title>World Bank Climate Data</title>
     <script src="./d3/d3.v3.js"></script>
+    <!-- load script called data_access from scripts directory; dumps to this namespace --!>
+    <script src="./scripts/data_access.js"></script>
+    <!-- link to google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <style>  /* CSS styles are set here */
     
@@ -58,22 +61,25 @@
   </head>
   <body>
     <script>
+      // global variable definitions
+      // have to be defined outside the d3.csv call so they can be accessed later on
+
       // set plot's dimensions
       var outerWidth = 900;
       var outerHeight = 500;
-      var margin = { left: 90, top: 50, right: 300, bottom: 60 }; // M increase right margin to fit legend
+      var margin = { left: 90, top: 50, right: 300, bottom: 60 }; 
 
       // make some space for the x and y axis labels
       var xAxisLabelOffset = 48;
       var yAxisLabelOffset = 60;
 
       // define the areas for plotting.  These will be used for the scales. 
-      // conforms to Mike Bostock's suggestion: http://bl.ocks.org/mbostock/3019563
+      // conforms to Mike Bostock's suggestion: (http://bl.ocks.org/mbostock/3019563),
       // but padding is called margin here
       var innerWidth  = outerWidth  - margin.left - margin.right;
       var innerHeight = outerHeight - margin.top  - margin.bottom;
 
-      // could map a 3rd data set onto radius (or color!)
+      // could map a 3rd data set onto radius
       // var rMin = 1; // "r" stands for radius
       // var rMax = 6;
       
@@ -83,9 +89,8 @@
       var xAxisLabelText = "CO2 emissions (kTons per capita)";
       var yAxisLabelText = "Energy Use (kilowatt hours per capita)";
 
-      // create an SVG element (think of it as a canvas on which
-      // your visuals are rendered. 
-      // (conceptually similar to HTML’s canvas element.) 
+      // create an SVG element (think of it as a canvas on which your 
+      // visuals are rendered. (conceptually similar to HTML’s canvas element.) 
       var svg = d3.select("body").append("svg")
 	// if you don't specify width and height, SVG will be greedy
         .attr("width", outerWidth)
@@ -96,16 +101,16 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       var xAxisG = g.append("g")
-        // ?? defining class "x axis", a child of g, a child of svg
         // ?? as of 4/24 no styles were added separately to the x axis 
         // book does same thing: see "First, I am going to add the class 
 	// names x and y to our x- and y-axes, respectively."
         // in http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_updating_axes
         // then uses x.axis to update the x axis after new random data is added. 
-        .attr("class", "x axis")
+        .attr("class", "x axis") // ?? unused class assignment? 
         .attr("transform", "translate(0," + innerHeight + ")")
       var xAxisLabel = xAxisG.append("text")
-        // attr() sets DOM attribute values, whereas style() applies CSS styles directly to an element
+        // attr() sets DOM attribute values, whereas style() applies CSS styles 
+        // directly to an element
         .style("text-anchor", "middle")
         .attr("x", innerWidth / 2)
         .attr("y", xAxisLabelOffset)
@@ -121,6 +126,7 @@
         .attr("class", "label")
         .text(yAxisLabelText);
 
+      // initialize x,yScale functions.  Set domain below (function of data plotted)
       var xScale = d3.scale.linear().range([0, innerWidth]);
       var yScale = d3.scale.linear().range([innerHeight, 0]);
       //var rScale = d3.scale.linear().range([rMin, rMax]);
@@ -136,12 +142,20 @@
         .ticks(5)
         .tickFormat(d3.format("s"))
         .outerTickSize(0);
+
+//      var tileLabelText = "abc"
+//      var title = svg.append("text")
+//        .text(titleLabelText)
        
-      // global variable definitions
-      // have to be defined outside the d3.csv call so they can be accessed later on
       var data;
       var x_dropDown;
       var y_dropDown;
+      var year_dropDown;
+
+      // todo: make year a int.  See type() function in test2_video.html
+      // If you assign a value to a variable that has not been declared, 
+      // it will automatically become a GLOBAL variable.
+      //var year_selected;
       
       // d3 requests (like d3.csv) are asynchronous so it is best practice 
       // to wrap all of the code dependent on your external request within 
@@ -149,47 +163,59 @@
       // before executing.
       // ?? Do we have 2 callback functions? syntax: d3.csv(url[[, accessor], callback])
       // ?? how does this differ from test2_video.html, where we used a render function? 
-      d3.csv("./data/climate-data-wRegion.csv", function(row,i){
-		 // i is the row number. 
+      d3.csv("./data/climate-data-melted.csv", function(row,i){
+	    // i is the row number. 
             // test to remove aggregated data (world, eurozone, etc.)
             if(row["Country region"] != "Aggregates") {
                  return {
                      country: row["Country name"],
 		     // allows for selections by row.series
                      series: row["Series name"],
-                     y1990: +row["1990"],
+                     year: +row["year"],
+                     value: +row["value"],
                      region: row["Country region"]
                  }
             }
-	    // ?? is rows a built-in thing to iterate over in d3.csv ?? 
+	    // ?? is rows a built-in iterator name for d3.csv ?? 
             }, function(error,rows){
                    if(error){
                      console.log(error);
                    }
                    
 		      // create a nest operator (allows for nested key-value pairs)
-                   data=d3.nest()
-		      // the country will be the keys
-                      .key(function(d) {return d.country;})
-		      // sort the nested data in ascending column name order
-                      .sortKeys(d3.ascending) 
-		      // .entries returns an array containing the property keys and 
-		      // values of the specified object 
-                      .entries(rows);
+                  data = d3.nest()
+		     // the year will be the second key
+                     .key(function(d) { return d.year; })
+		     // the country will be the second key
+                     // todo: sort keys  (Matt had something like .sortKeys(d3.ascending))
+                     .key(function(d) {return d.country;})
+                     .entries(rows);
+                  // print data for troubleshooting
+                  //console.log("print data right after loading")
+                  //console.log(data)
+
+                  //console.table(JSON.stringify(data[0]["country"])) //['1990']['China'])
+
+                  // initial setting of the year to plot by. 
+                  // If you assign a value to a variable that has not been declared, 
+                  // it will automatically become a GLOBAL variable.
+                  year_selected = 1991;
+                  data_year = nestedObjectByKey(data, "key", year_selected);
+                  console.log(data_year)
                   
-		      // x-axis label
+		  // x-axis label
                   x_label = d3.select("body").append("label")
                                 .text("X axis")
                                 .attr("class","labels");
 
-              // Create Dropdown table for x-axis
+                  // Create Dropdown table for x-axis
                   x_dropDown = x_label.append("select")
                                 //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
                                 .attr("class","dropdowns");
 
-              // populate the dropDown options (without labels)           
+                  // populate the dropDown options (without labels)           
                   var x_options = x_dropDown.selectAll("option")
-                       .data(data[0].values.map(function(d) { return (d.series); }))
+                       .data(data_year[0].values.map(function(d) { return (d.series); }))
                      .enter()
                        .append("option");
                   
@@ -197,7 +223,8 @@
 		  // (empty strings on dropdowns if omitted)    
                   x_options.text(function(d) {return d}) // adds label to each dropdown row
                     .attr("value", function(d) {return d}) // accessed in x_menuChanged()
-                    .attr("selected", function(d) {if(d == xseries) { return d}}); // set initially selected option
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == xseries) { return d}}); 
 		    ;
 
                   // Create Dropdown table for y-axis
@@ -212,22 +239,45 @@
                   // populate the dropDown options (without labels)  
 		  // ?? just curious, could the x and y functions be combined 
 		  // into 1 factored function? (J doesn't have namespace intuition yet)
-          // M - I think there need to be two dropdown objects, but the data/attributes 
-          // for each could probably be combined with some thought.
+                  // M - I think there need to be two dropdown objects, but the data/attributes 
+                  // for each could probably be combined with some thought.
                   var y_options = y_dropDown.selectAll("option")
-                       .data(data[0].values.map(function(d) { return (d.series); }))
+                       // appending on a an array (["Land area...", "Ag... (% of total )", ...]
+                       .data(data_year[0].values.map(function(d) { return (d.series); }))
                      .enter()
                        .append("option");
                        
 		  // put text on each y dropDown
                   y_options.text(function(d) {return d})
                     .attr("value", function(d) {return d})
-                    .attr("selected", function(d) {if(d == yseries) { return d}}); // set initially selected option
-                    
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == yseries) { return d}}); 
+					
+		  // TODO: add title at top showing the year selected. 
+		  // Create Dropdown table for the year
+                  year_label = d3.select("body").append("label")
+                    .text("year")
+                    .attr("class", "dropdowns");
+
+                  year_dropDown = year_label.append("select")
+                                .attr("class","dropdowns");
+
+                  // populate the dropDown options (without labels)           
+                  var year_options = year_dropDown.selectAll("option")
+                       .data( getListOfYears )
+                     .enter()
+                       .append("option");
+                  
+		  // put labels on the dropdown options.  
+                  year_options.text(function(d) {return d}) // adds label to each dropdown row
+                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == year_selected) { return d}}); 
+		    ;
 		
 		   // render filters out data with missing values, 
 		   // updates scales, plots the scatter points
-                   render(data);
+                   render(data, year_selected);
              
             });
             
@@ -242,7 +292,7 @@
 	    
             // xInd = true if x-value exists for each country 
             var xInd = x.values.find(
-		function(f) { return (f.series == xseries && !isNaN(f.y1990))});  
+		function(f) { return (f.series == xseries && !isNaN(f.value))});  
             
 	    // 
             if (xInd != null) { // If x-value exists, check for y-value
@@ -250,7 +300,7 @@
 			return (f.series == yseries 
 				// ?? maybe we aren't applying to single country data sets...
 				&& f.country == xInd.country 
-				&& !isNaN(f.y1990))}) ;} 
+				&& !isNaN(f.value))}) ;} 
 	    else {include = false ;}
 
             if (yInd == null) { include = false ;}
@@ -258,27 +308,35 @@
             return include
         }}
 
-      function render(data){
+
+      function render(data, year_selected){
+        console.log("render function called")
+        // test findValue function:
+        //test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
+        //console.log(test)
         
-        filtered = data.filter(isSeries(xseries, yseries));
+        console.log("year selected: " + year_selected)
+        data_year = nestedObjectByKey(data, "key", year_selected);
         
+        filtered = data_year.filter(isSeries(xseries, yseries));
+        
+        // print the data I grabbed. 
+        //console.table(JSON.stringify(data_year))
+        console.table(data_year)
+        
+        console.log("set xScale domain")
 	// d3.extent finds the minimum and maximum value in an array
-        xScale.domain(d3.extent(data, function (d) { 
+        xScale.domain(d3.extent(data_year, function (d) { 
 		    // index and f are objects
 		    // ex. from console: Object {country: "United Kingdom", 
 		    //				series: "CO2 emissions per capita (metric tons)", y1990: 9.96, ...
 		    // find() method returns the value of the first element in an array that 
 		    // pass a test (provided as a function)
-                    var index = d.values.find(function(f) { 
-			//console.log(f)
-			return f.series == xseries});
-		    //console.log(index)
-		    // now we isolate single values. (e.g. index.y1990 = 3.12)
-		    //console.log(index.y1990)
-                    return index.y1990; }));
-        yScale.domain(d3.extent(data, function (d) { 
+                    var index = d.values.find(function(f) { return f.series == xseries});
+                    return index.value; })); // Need to get all the way to the data
+        yScale.domain(d3.extent(data_year, function (d) { 
                     var index = d.values.find(function(f) { return f.series == yseries});
-                    return index.y1990; }));
+                    return index.value; }));
                     
         yAxisLabel.text(yseries)
         xAxisLabel.text(xseries)
@@ -301,17 +359,17 @@
           .transition().duration(800)
           .attr("cx", function (d){
                     var index = d.values.find(function(f) { return f.series == xseries });
-                    return xScale(index.y1990); })
+                    return xScale(index.value); })
           .attr("cy", function (d){ 
                     var index = d.values.find(function(f) { return f.series == yseries });
-                    return yScale(index.y1990); })
+                    return yScale(index.value); })
           .attr("r", function (d){ return 5 })
           .attr("fill", function (d) { 
                     var index = d.values.find(function(f) { 
                     return f.series == yseries });
                     return colorScale(index.region); });
-          //Create the tooltip for each circle
-          
+
+          //Create the tooltip for each circle          
           circles.on("mouseover", function(d) {
               var index = d.values.find(function(f) { return f.series == xseries });
             tooltip.transition()
@@ -350,21 +408,42 @@
               .style("text-anchor", "begin")
               .text(function(d) { return d; });
 
+	// update the graphic upon menu selection
         x_dropDown.on("change", x_menuChanged);
         y_dropDown.on("change", y_menuChanged);
+        // TODO: Adding this year_dropDown.on line back breaks the code.
+        // however, if you paste it into the console after the page loads, everything is fine. 
+        year_dropDown.on("change", year_menuChanged);
+
+	// print the data to the console (maybe useful for debugging)
+        console.log(g.selectAll("circle"))
  
     }
     
     // re-render data after drop-down menu is selected.
     function x_menuChanged() {
+        console.log("x menu changed")
+        console.log("d3.event.target.value: ", d3.event.target.value)
         xseries = d3.event.target.value;  
-        render(data)
+        render(data, year_selected) // must be data, not data_year  (JM 160427 7pm)
     }
     
     function y_menuChanged() {
+        console.log("y menu changed")
         yseries = d3.event.target.value;  
-        render(data)
+        render(data, year_selected)  // must be data, not data_year   (JM 160427 7pm)
     }
+
+    function year_menuChanged() {
+        console.log("year menu changed")
+        //new_year = 1990
+        new_year = d3.event.target.value;
+        console.log("year menu changed.  New value: " + new_year)
+        // re-define the global variable that affects which year's data is plotted. 
+        year_selected = new_year;  
+        render(data, year_selected)  // must be data, not data_year   (JM 160427 7pm)
+    }
+
     </script>
   </body>
 </html>
