@@ -156,7 +156,7 @@
       // before executing.
       // ?? Do we have 2 callback functions? syntax: d3.csv(url[[, accessor], callback])
       // ?? how does this differ from test2_video.html, where we used a render function? 
-      d3.csv("./data/climate-data-melted--debugging_set.csv", function(row,i){
+      d3.csv("./data/climate-data-melted.csv", function(row,i){
 	    // i is the row number. 
             // test to remove aggregated data (world, eurozone, etc.)
             if(row["Country region"] != "Aggregates") {
