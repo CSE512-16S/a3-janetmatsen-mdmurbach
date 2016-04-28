@@ -1,3 +1,14 @@
+// function to get list of years. 
+// used to populate the y-dropdown
+function getListOfYears() {
+  years = []
+  for (i in data) {
+      // ?? is making labels out of int a problem? 
+      //years.push(Math.round(data[i]["key"]))}
+      years.push( data[i]["key"] )}
+  return years;
+}
+
 function nestedObjectByKey(array, key_name, desired_value) {
 // If you have [Object, Object, ...] and each Object has an
 // array of objects as its value (e.g. from d3.nest), 
