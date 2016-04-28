@@ -184,8 +184,8 @@
                      .key(function(d) {return d.country;})
                      .entries(rows);
                   // print data for troubleshooting
-                  console.log("print data right after loading")
-                  console.log(data)
+                  //console.log("print data right after loading")
+                  //console.log(data)
 
 //                  // simple demo of looping over keys
 //                  for (i in Object.keys(data)){
@@ -293,7 +293,7 @@
           //console.log('candidate value: ' + found_value);
           //console.log(typeof desired_value)
           if (found_value.toString() == desired_value.toString()) {
-            console.log("found array for sought value. (" + desired_value + ")");
+            // console.log("found array for sought value. (" + desired_value + ")");
             right_object =  array[obj_num]
             //console.log("return object: ")
             //console.log(right_array)
@@ -308,11 +308,11 @@
       // array does *NOT* have an array as a value for that key, 
       // you can use this function to get the number stored in key "value"
         object_nums = Object.keys(array)
-        console.log("loop over these object numbers:")
-        console.log(object_nums)
+        //console.log("loop over these object numbers:")
+        //console.log(object_nums)
         for (obj_num in object_nums){ 
           obj = array[obj_num]
-          console.log(obj)
+          //console.log(obj)
           if (obj[target_key_name] == target_key_value){
               return obj[output_key]
           }                      
@@ -329,7 +329,7 @@
           //console.log('obj_num: ' + obj_num);
           //console.log(data[obj_num]);
           //year = data[obj_num]['key'];
-          console.log('year: ' + year);
+          //console.log('year: ' + year);
           // array_for_year = data[obj_num].values; 
           //array_for_year = getArrayByKeyValPair(data, "key", "1990"); 
           array_for_year = nestedObjectByKey(data, "key", year); 
@@ -351,25 +351,21 @@
  
 
       function render(data){
+        console.log("render function called")
         // test findValue function:
-        test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
-        console.log(test)
-        
-        filtered = data_year.filter(isSeries(xseries, yseries));
+        //test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
+        //console.log(test)
         
         temp_year = 1991;
         data_year = nestedObjectByKey(data, "key", temp_year);
+        
+        filtered = data_year.filter(isSeries(xseries, yseries));
         
         // print the data I grabbed. 
         //console.table(JSON.stringify(data_year))
         console.table(data_year)
         
         console.log("set xScale domain")
-//        x_variable_extent = d3.extent(data_year, function(d) {
-//          var index = d.values.find(function(f) { return f.series == yseries});
-//          return index.year[yseries]; })       
-//        console.log(x_variable_extent) 
-
         xScale.domain(d3.extent(data_year, function (d) { 
                     var index = d.values.find(function(f) { return f.series == xseries});
                     return index.value; })); // Need to get all the way to the data
@@ -449,12 +445,10 @@
               .style("text-anchor", "begin")
               .text(function(d) { return d; });
 
-	// print the data to the console (useful for debugging)
-        console.log(g.selectAll("circle"))
-
 	// update the graphic upon menu selection
         x_dropDown.on("change", x_menuChanged);
         y_dropDown.on("change", y_menuChanged);
+
 	// print the data to the console (maybe useful for debugging)
         console.log(g.selectAll("circle"))
  
@@ -462,11 +456,14 @@
     
     // re-render data after drop-down menu is selected.
     function x_menuChanged() {
+        console.log("x menu changed")
+        console.log("d3.event.target.value: ", d3.event.target.value)
         xseries = d3.event.target.value;  
         render(data_year)
     }
     
     function y_menuChanged() {
+        console.log("y menu changed")
         yseries = d3.event.target.value;  
         render(data_year)
     }
