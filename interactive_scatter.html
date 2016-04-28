@@ -261,13 +261,9 @@
                     .attr("value", function(d) {return d})
                     // set initially selected option
                     .attr("selected", function(d) {if(d == yseries) { return d}}); 
-		
-		   // render filters out data with missing values, 
-		   // updates scales, plots the scatter points
-                   render(data, year_selected);
-
-                  // TODO: add title at top showing the year selected. 
-                  // Create Dropdown table for the year
+					
+		  // TODO: add title at top showing the year selected. 
+		  // Create Dropdown table for the year
                   year_label = d3.select("body").append("label")
                     .text("year")
                     .attr("class", "dropdowns");
@@ -287,6 +283,10 @@
                     // set initially selected option
                     .attr("selected", function(d) {if(d == year_selected) { return d}}); 
 		    ;
+		
+		   // render filters out data with missing values, 
+		   // updates scales, plots the scatter points
+                   render(data, year_selected);
              
             });
             
@@ -487,7 +487,7 @@
         y_dropDown.on("change", y_menuChanged);
         // TODO: Adding this year_dropDown.on line back breaks the code.
         // however, if you paste it into the console after the page loads, everything is fine. 
-        //year_dropDown.on("change", year_menuChanged);
+        year_dropDown.on("change", year_menuChanged);
 
 	// print the data to the console (maybe useful for debugging)
         console.log(g.selectAll("circle"))
