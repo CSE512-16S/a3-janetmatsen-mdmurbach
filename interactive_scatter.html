@@ -187,11 +187,6 @@
                   //console.log("print data right after loading")
                   //console.log(data)
 
-//                  // simple demo of looping over keys
-//                  for (i in Object.keys(data)){
-//                    console.log(i)
-//                  }
-        
                   //console.table(JSON.stringify(data[0]["country"])) //['1990']['China'])
 
                   temp_year = 1991;
@@ -360,9 +355,7 @@
         temp_year = 1991;
         data_year = nestedObjectByKey(data, "key", temp_year);
         
-        // TODO: turn filtering back on.  Was breaking dropdowns 4/27 7PM. 
-        //filtered = data_year.filter(isSeries(xseries, yseries));
-        filtered = data_year
+        filtered = data_year.filter(isSeries(xseries, yseries));
         
         // print the data I grabbed. 
         //console.table(JSON.stringify(data_year))
