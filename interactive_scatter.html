@@ -194,55 +194,57 @@
         
                   //console.table(JSON.stringify(data[0]["country"])) //['1990']['China'])
 
+                  temp_year = 1991;
+                  data_year = nestedObjectByKey(data, "key", temp_year);
                   
-//		  // x-axis label
-//                  x_label = d3.select("body").append("label")
-//                                .text("X axis")
-//                                .attr("class","labels");
-//
-//                  // Create Dropdown table for x-axis
-//                  x_dropDown = x_label.append("select")
-//                                //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
-//                                .attr("class","dropdowns");
-//
-//                  // populate the dropDown options (without labels)           
-//                  var x_options = x_dropDown.selectAll("option")
-//                       .data(data[0].values.map(function(d) { return (d.series); }))
-//                     .enter()
-//                       .append("option");
-//                  
-//		  // put labels on the dropdown options.  
-//		  // (empty strings on dropdowns if omitted)    
-//                  x_options.text(function(d) {return d}) // adds label to each dropdown row
-//                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
-//                    // set initially selected option
-//                    .attr("selected", function(d) {if(d == xseries) { return d}}); 
-//		    ;
-//
-//                  // Create Dropdown table for y-axis
-//                  y_label = d3.select("body").append("label")
-//                                .text("Y axis")
-//                                .attr("class","labels"); 
-//                                
-//                  y_dropDown = y_label.append("select")
-//                                .attr("name", "y-list")  // ?? redundant b/c not in CSS?
-//                                .attr("class","dropdowns");
-//
-//                  // populate the dropDown options (without labels)  
-//		  // ?? just curious, could the x and y functions be combined 
-//		  // into 1 factored function? (J doesn't have namespace intuition yet)
-//                  // M - I think there need to be two dropdown objects, but the data/attributes 
-//                  // for each could probably be combined with some thought.
-//                  var y_options = y_dropDown.selectAll("option")
-//                       .data(data[0].values.map(function(d) { return (d.series); }))
-//                     .enter()
-//                       .append("option");
-//                       
-//		  // put text on each y dropDown
-//                  y_options.text(function(d) {return d})
-//                    .attr("value", function(d) {return d})
-//                    // set initially selected option
-//                    .attr("selected", function(d) {if(d == yseries) { return d}}); 
+		  // x-axis label
+                  x_label = d3.select("body").append("label")
+                                .text("X axis")
+                                .attr("class","labels");
+
+                  // Create Dropdown table for x-axis
+                  x_dropDown = x_label.append("select")
+                                //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
+                                .attr("class","dropdowns");
+
+                  // populate the dropDown options (without labels)           
+                  var x_options = x_dropDown.selectAll("option")
+                       .data(data_year[0].values.map(function(d) { return (d.series); }))
+                     .enter()
+                       .append("option");
+                  
+		  // put labels on the dropdown options.  
+		  // (empty strings on dropdowns if omitted)    
+                  x_options.text(function(d) {return d}) // adds label to each dropdown row
+                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == xseries) { return d}}); 
+		    ;
+
+                  // Create Dropdown table for y-axis
+                  y_label = d3.select("body").append("label")
+                                .text("Y axis")
+                                .attr("class","labels"); 
+                                
+                  y_dropDown = y_label.append("select")
+                                .attr("name", "y-list")  // ?? redundant b/c not in CSS?
+                                .attr("class","dropdowns");
+
+                  // populate the dropDown options (without labels)  
+		  // ?? just curious, could the x and y functions be combined 
+		  // into 1 factored function? (J doesn't have namespace intuition yet)
+                  // M - I think there need to be two dropdown objects, but the data/attributes 
+                  // for each could probably be combined with some thought.
+                  var y_options = y_dropDown.selectAll("option")
+                       .data(data_year[0].values.map(function(d) { return (d.series); }))
+                     .enter()
+                       .append("option");
+                       
+		  // put text on each y dropDown
+                  y_options.text(function(d) {return d})
+                    .attr("value", function(d) {return d})
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == yseries) { return d}}); 
 		
 		   // render filters out data with missing values, 
 		   // updates scales, plots the scatter points
@@ -348,8 +350,6 @@
       };
  
 
-
-
       function render(data){
         // test findValue function:
         test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
@@ -429,32 +429,32 @@
           });
         circles.exit().remove();
         
-//        // Set up legend using the colorScale variable defined earlier
-//        var legend = svg.selectAll(".legend")
-//              .data(colorScale.domain())
-//            .enter().append("g")
-//              .attr("class", "legend")
-//              .attr("transform", function(d, i) { return "translate(90," + i * 20 + ")"; });
-//
-//          legend.append("rect")
-//              .attr("x", innerWidth + 18)
-//              .attr("width", 18)
-//              .attr("height", 18)
-//              .style("fill", colorScale);
-//
-//          legend.append("text")
-//              .attr("x", innerWidth + 18 + 18 + 9) // innerWidth + 18 + rect width + offset
-//              .attr("y", 9)
-//              .attr("dy", ".35em")
-//              .style("text-anchor", "begin")
-//              .text(function(d) { return d; });
+        // Set up legend using the colorScale variable defined earlier
+        var legend = svg.selectAll(".legend")
+              .data(colorScale.domain())
+            .enter().append("g")
+              .attr("class", "legend")
+              .attr("transform", function(d, i) { return "translate(90," + i * 20 + ")"; });
 
-//	// print the data to the console (useful for debugging)
-//        console.log(g.selectAll("circle"))
+          legend.append("rect")
+              .attr("x", innerWidth + 18)
+              .attr("width", 18)
+              .attr("height", 18)
+              .style("fill", colorScale);
 
-//	// update the graphic upon menu selection
-//        x_dropDown.on("change", x_menuChanged);
-//        y_dropDown.on("change", y_menuChanged);
+          legend.append("text")
+              .attr("x", innerWidth + 18 + 18 + 9) // innerWidth + 18 + rect width + offset
+              .attr("y", 9)
+              .attr("dy", ".35em")
+              .style("text-anchor", "begin")
+              .text(function(d) { return d; });
+
+	// print the data to the console (useful for debugging)
+        console.log(g.selectAll("circle"))
+
+	// update the graphic upon menu selection
+        x_dropDown.on("change", x_menuChanged);
+        y_dropDown.on("change", y_menuChanged);
 	// print the data to the console (maybe useful for debugging)
         console.log(g.selectAll("circle"))
  
@@ -466,10 +466,10 @@
         render(data_year)
     }
     
-//    function y_menuChanged() {
-//        yseries = d3.event.target.value;  
-//        render(data)
-//    }
+    function y_menuChanged() {
+        yseries = d3.event.target.value;  
+        render(data_year)
+    }
     </script>
   </body>
 </html>
