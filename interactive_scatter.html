@@ -256,28 +256,28 @@
 
     // Returns true if x-series and y-series values exist for a country
     // Called by filter(), which applies the function element-wise. 
-//    function isSeries(xseries, yseries) {
-//        return function(x) {
-//	    // include the data point unless it is missing an x or y value
-//            include = true;
-//	    
-//            // xInd = true if x-value exists for each country 
-//            var xInd = x.values.find(
-//		function(f) { return (f.series == xseries && !isNaN(f.y1990))});  
-//            
-//	    // 
-//            if (xInd != null) { // If x-value exists, check for y-value
-//                var yInd = x.values.find(function(f) { 
-//			return (f.series == yseries 
-//				// ?? maybe we aren't applying to single country data sets...
-//				&& f.country == xInd.country 
-//				&& !isNaN(f.y1990))}) ;} 
-//	    else {include = false ;}
-//
-//            if (yInd == null) { include = false ;}
-//
-//            return include
-//        }}
+    function isSeries(xseries, yseries) {
+        return function(x) {
+	    // include the data point unless it is missing an x or y value
+            include = true;
+	    
+            // xInd = true if x-value exists for each country 
+            var xInd = x.values.find(
+		function(f) { return (f.series == xseries && !isNaN(f.value))});  
+            
+	    // 
+            if (xInd != null) { // If x-value exists, check for y-value
+                var yInd = x.values.find(function(f) { 
+			return (f.series == yseries 
+				// ?? maybe we aren't applying to single country data sets...
+				&& f.country == xInd.country 
+				&& !isNaN(f.value))}) ;} 
+	    else {include = false ;}
+
+            if (yInd == null) { include = false ;}
+
+            return include
+        }}
 
       function nestedObjectByKey(array, key_name, desired_value) {
       // If you have [Object, Object, ...] and each Object has an
@@ -355,7 +355,7 @@
         test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
         console.log(test)
         
-//        filtered = data.filter(isSeries(xseries, yseries));
+        filtered = data_year.filter(isSeries(xseries, yseries));
         
         temp_year = 1991;
         data_year = nestedObjectByKey(data, "key", temp_year);
@@ -392,7 +392,7 @@
         
         // todo: add filtering back to remove NA data.
 //        var circles = g.selectAll("circle").data(filtered);
-        var circles = g.selectAll("circle").data(data_year);
+        var circles = g.selectAll("circle").data(filtered);
         // create an actual svg circle for each object in circles.  
         circles.enter().append("circle");
 	// give the circles properties. 
