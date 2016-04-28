@@ -1,1 +1,449 @@
-My page
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>World Bank Climate Data</title>
+    <script src="./d3/d3.v3.js"></script>
+    <!-- load script called data_access from scripts directory; dumps to this namespace --!>
+    <script src="./scripts/data_access.js"></script>
+    <!-- link to google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <style>  /* CSS styles are set here */
+    
+      /* Select and style all elements with class="text" (svg text, not html text)(?) */
+      /* Includes axes text. */ 
+      .axis text {
+	/* uses google fonts */
+        font-family: 'Poiret One', cursive;
+        font-size: 16pt;
+        /* ?? Why don't we have to specify fill color? */
+      }
+      /* Are we defining attributes for the classes axis and label simultaneously */
+      .axis .label {
+        font-size: 20pt;
+      }
+
+      /* classes "path" and "line" are used for axes (as is text) */
+      /* same comma syntax as eBook: http://alignedleft.com/tutorials/d3/axes */
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      
+      /* labels drop-down selectors */
+      .labels {
+        display: block;
+      }
+      
+      .dropdowns {
+        display: block;
+        margin: 10px;
+        font-size: 10pt;
+      }
+      
+      .tooltip {
+          position: absolute;
+          width: 200px;
+          height: 28px;
+          pointer-events: none;
+          color: red;
+          font-weight: bold;
+      }
+      
+      .svg {
+        display: block;
+        margin-left:auto;
+        margin-right: auto;        
+      }
+
+    </style>
+  </head>
+  <body>
+    <script>
+      // global variable definitions
+      // have to be defined outside the d3.csv call so they can be accessed later on
+
+      // set plot's dimensions
+      var outerWidth = 900;
+      var outerHeight = 500;
+      var margin = { left: 90, top: 50, right: 300, bottom: 60 }; 
+
+      // make some space for the x and y axis labels
+      var xAxisLabelOffset = 48;
+      var yAxisLabelOffset = 60;
+
+      // define the areas for plotting.  These will be used for the scales. 
+      // conforms to Mike Bostock's suggestion: (http://bl.ocks.org/mbostock/3019563),
+      // but padding is called margin here
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      // could map a 3rd data set onto radius
+      // var rMin = 1; // "r" stands for radius
+      // var rMax = 6;
+      
+      // Initial x and y series to plot 
+      var yseries = "Energy use per capita (kilograms of oil equivalent)";
+      var xseries = "CO2 emissions per capita (metric tons)";
+      var xAxisLabelText = "CO2 emissions (kTons per capita)";
+      var yAxisLabelText = "Energy Use (kilowatt hours per capita)";
+
+      // create an SVG element (think of it as a canvas on which your 
+      // visuals are rendered. (conceptually similar to HTML’s canvas element.) 
+      var svg = d3.select("body").append("svg")
+	// if you don't specify width and height, SVG will be greedy
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+
+      // master handle for the plot's chart area
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var xAxisG = g.append("g")
+        // ?? as of 4/24 no styles were added separately to the x axis 
+        // book does same thing: see "First, I am going to add the class 
+	// names x and y to our x- and y-axes, respectively."
+        // in http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_updating_axes
+        // then uses x.axis to update the x axis after new random data is added. 
+        .attr("class", "x axis") // ?? unused class assignment? 
+        .attr("transform", "translate(0," + innerHeight + ")")
+      var xAxisLabel = xAxisG.append("text")
+        // attr() sets DOM attribute values, whereas style() applies CSS styles 
+        // directly to an element
+        .style("text-anchor", "middle")
+        .attr("x", innerWidth / 2)
+        .attr("y", xAxisLabelOffset)
+        .attr("class", "label")
+        .text(xAxisLabelText);
+
+      // ?? Why are we giving this element a class that doesn't have a CSS style? 
+      var yAxisG = g.append("g")
+        .attr("class", "y axis");
+      var yAxisLabel = yAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)")
+        .attr("class", "label")
+        .text(yAxisLabelText);
+
+      // initialize x,yScale functions.  Set domain below (function of data plotted)
+      var xScale = d3.scale.linear().range([0, innerWidth]);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+      //var rScale = d3.scale.linear().range([rMin, rMax]);
+      var colorScale = d3.scale.category10();
+
+      var xAxis = d3.svg.axis().scale(xScale)
+        .orient("bottom")
+        .ticks(5) 	// sets *rough* # of ticks
+        .tickFormat(d3.format("s"))
+        .outerTickSize(0);
+      var yAxis = d3.svg.axis().scale(yScale)
+        .orient("left")
+        .ticks(5)
+        .tickFormat(d3.format("s"))
+        .outerTickSize(0);
+
+//      var tileLabelText = "abc"
+//      var title = svg.append("text")
+//        .text(titleLabelText)
+       
+      var data;
+      var x_dropDown;
+      var y_dropDown;
+      var year_dropDown;
+
+      // todo: make year a int.  See type() function in test2_video.html
+      // If you assign a value to a variable that has not been declared, 
+      // it will automatically become a GLOBAL variable.
+      //var year_selected;
+      
+      // d3 requests (like d3.csv) are asynchronous so it is best practice 
+      // to wrap all of the code dependent on your external request within 
+      // the request callback, ensuring that this code has access to the data 
+      // before executing.
+      // ?? Do we have 2 callback functions? syntax: d3.csv(url[[, accessor], callback])
+      // ?? how does this differ from test2_video.html, where we used a render function? 
+      d3.csv("./data/climate-data-melted.csv", function(row,i){
+	    // i is the row number. 
+            // test to remove aggregated data (world, eurozone, etc.)
+            if(row["Country region"] != "Aggregates") {
+                 return {
+                     country: row["Country name"],
+		     // allows for selections by row.series
+                     series: row["Series name"],
+                     year: +row["year"],
+                     value: +row["value"],
+                     region: row["Country region"]
+                 }
+            }
+	    // ?? is rows a built-in iterator name for d3.csv ?? 
+            }, function(error,rows){
+                   if(error){
+                     console.log(error);
+                   }
+                   
+		      // create a nest operator (allows for nested key-value pairs)
+                  data = d3.nest()
+		     // the year will be the second key
+                     .key(function(d) { return d.year; })
+		     // the country will be the second key
+                     // todo: sort keys  (Matt had something like .sortKeys(d3.ascending))
+                     .key(function(d) {return d.country;})
+                     .entries(rows);
+                  // print data for troubleshooting
+                  //console.log("print data right after loading")
+                  //console.log(data)
+
+                  //console.table(JSON.stringify(data[0]["country"])) //['1990']['China'])
+
+                  // initial setting of the year to plot by. 
+                  // If you assign a value to a variable that has not been declared, 
+                  // it will automatically become a GLOBAL variable.
+                  year_selected = 1991;
+                  data_year = nestedObjectByKey(data, "key", year_selected);
+                  console.log(data_year)
+                  
+		  // x-axis label
+                  x_label = d3.select("body").append("label")
+                                .text("X axis")
+                                .attr("class","labels");
+
+                  // Create Dropdown table for x-axis
+                  x_dropDown = x_label.append("select")
+                                //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
+                                .attr("class","dropdowns");
+
+                  // populate the dropDown options (without labels)           
+                  var x_options = x_dropDown.selectAll("option")
+                       .data(data_year[0].values.map(function(d) { return (d.series); }))
+                     .enter()
+                       .append("option");
+                  
+		  // put labels on the dropdown options.  
+		  // (empty strings on dropdowns if omitted)    
+                  x_options.text(function(d) {return d}) // adds label to each dropdown row
+                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == xseries) { return d}}); 
+		    ;
+
+                  // Create Dropdown table for y-axis
+                  y_label = d3.select("body").append("label")
+                                .text("Y axis")
+                                .attr("class","labels"); 
+                                
+                  y_dropDown = y_label.append("select")
+                                .attr("name", "y-list")  // ?? redundant b/c not in CSS?
+                                .attr("class","dropdowns");
+
+                  // populate the dropDown options (without labels)  
+		  // ?? just curious, could the x and y functions be combined 
+		  // into 1 factored function? (J doesn't have namespace intuition yet)
+                  // M - I think there need to be two dropdown objects, but the data/attributes 
+                  // for each could probably be combined with some thought.
+                  var y_options = y_dropDown.selectAll("option")
+                       // appending on a an array (["Land area...", "Ag... (% of total )", ...]
+                       .data(data_year[0].values.map(function(d) { return (d.series); }))
+                     .enter()
+                       .append("option");
+                       
+		  // put text on each y dropDown
+                  y_options.text(function(d) {return d})
+                    .attr("value", function(d) {return d})
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == yseries) { return d}}); 
+					
+		  // TODO: add title at top showing the year selected. 
+		  // Create Dropdown table for the year
+                  year_label = d3.select("body").append("label")
+                    .text("year")
+                    .attr("class", "dropdowns");
+
+                  year_dropDown = year_label.append("select")
+                                .attr("class","dropdowns");
+
+                  // populate the dropDown options (without labels)           
+                  var year_options = year_dropDown.selectAll("option")
+                       .data( getListOfYears )
+                     .enter()
+                       .append("option");
+                  
+		  // put labels on the dropdown options.  
+                  year_options.text(function(d) {return d}) // adds label to each dropdown row
+                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
+                    // set initially selected option
+                    .attr("selected", function(d) {if(d == year_selected) { return d}}); 
+		    ;
+		
+		   // render filters out data with missing values, 
+		   // updates scales, plots the scatter points
+                   render(data, year_selected);
+             
+            });
+            
+      
+
+    // Returns true if x-series and y-series values exist for a country
+    // Called by filter(), which applies the function element-wise. 
+    function isSeries(xseries, yseries) {
+        return function(x) {
+	    // include the data point unless it is missing an x or y value
+            include = true;
+	    
+            // xInd = true if x-value exists for each country 
+            var xInd = x.values.find(
+		function(f) { return (f.series == xseries && !isNaN(f.value))});  
+            
+	    // 
+            if (xInd != null) { // If x-value exists, check for y-value
+                var yInd = x.values.find(function(f) { 
+			return (f.series == yseries 
+				// ?? maybe we aren't applying to single country data sets...
+				&& f.country == xInd.country 
+				&& !isNaN(f.value))}) ;} 
+	    else {include = false ;}
+
+            if (yInd == null) { include = false ;}
+
+            return include
+        }}
+
+
+      function render(data, year_selected){
+        console.log("render function called")
+        // test findValue function:
+        //test = findValue("1991", "China", "Cereal yield (kg per hectare)", "value")
+        //console.log(test)
+        
+        console.log("year selected: " + year_selected)
+        data_year = nestedObjectByKey(data, "key", year_selected);
+        
+        filtered = data_year.filter(isSeries(xseries, yseries));
+        
+        // print the data I grabbed. 
+        //console.table(JSON.stringify(data_year))
+        console.table(data_year)
+        
+        console.log("set xScale domain")
+	// d3.extent finds the minimum and maximum value in an array
+        xScale.domain(d3.extent(data_year, function (d) { 
+		    // index and f are objects
+		    // ex. from console: Object {country: "United Kingdom", 
+		    //				series: "CO2 emissions per capita (metric tons)", y1990: 9.96, ...
+		    // find() method returns the value of the first element in an array that 
+		    // pass a test (provided as a function)
+                    var index = d.values.find(function(f) { return f.series == xseries});
+                    return index.value; })); // Need to get all the way to the data
+        yScale.domain(d3.extent(data_year, function (d) { 
+                    var index = d.values.find(function(f) { return f.series == yseries});
+                    return index.value; }));
+                    
+        yAxisLabel.text(yseries)
+        xAxisLabel.text(xseries)
+
+        // generate the x and y axes by calling the functions that generate them. 
+        // call() hands off g to the xAxis function, so our axis is generated within g
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+        
+        // add the tooltip area to the webpage
+        var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+        
+        var circles = g.selectAll("circle").data(filtered);
+        // create an actual svg circle for each object in circles.  
+        circles.enter().append("circle");
+	// give the circles properties. 
+        circles
+          .transition().duration(800)
+          .attr("cx", function (d){
+                    var index = d.values.find(function(f) { return f.series == xseries });
+                    return xScale(index.value); })
+          .attr("cy", function (d){ 
+                    var index = d.values.find(function(f) { return f.series == yseries });
+                    return yScale(index.value); })
+          .attr("r", function (d){ return 5 })
+          .attr("fill", function (d) { 
+                    var index = d.values.find(function(f) { 
+                    return f.series == yseries });
+                    return colorScale(index.region); });
+
+          //Create the tooltip for each circle          
+          circles.on("mouseover", function(d) {
+              var index = d.values.find(function(f) { return f.series == xseries });
+            tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+
+              // tooltip text
+              tooltip.html(index.country)
+                   .style("left", (d3.event.pageX + 5) + "px")// margin.left + "px"
+                   .style("top", (d3.event.pageY - 28) + "px");// margin.top + "px"
+          })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+          });
+        circles.exit().remove();
+        
+        // Set up legend using the colorScale variable defined earlier
+        var legend = svg.selectAll(".legend")
+              .data(colorScale.domain())
+            .enter().append("g")
+              .attr("class", "legend")
+              .attr("transform", function(d, i) { return "translate(90," + i * 20 + ")"; });
+
+          legend.append("rect")
+              .attr("x", innerWidth + 18)
+              .attr("width", 18)
+              .attr("height", 18)
+              .style("fill", colorScale);
+
+          legend.append("text")
+              .attr("x", innerWidth + 18 + 18 + 9) // innerWidth + 18 + rect width + offset
+              .attr("y", 9)
+              .attr("dy", ".35em")
+              .style("text-anchor", "begin")
+              .text(function(d) { return d; });
+
+	// update the graphic upon menu selection
+        x_dropDown.on("change", x_menuChanged);
+        y_dropDown.on("change", y_menuChanged);
+        // TODO: Adding this year_dropDown.on line back breaks the code.
+        // however, if you paste it into the console after the page loads, everything is fine. 
+        year_dropDown.on("change", year_menuChanged);
+
+	// print the data to the console (maybe useful for debugging)
+        console.log(g.selectAll("circle"))
+ 
+    }
+    
+    // re-render data after drop-down menu is selected.
+    function x_menuChanged() {
+        console.log("x menu changed")
+        console.log("d3.event.target.value: ", d3.event.target.value)
+        xseries = d3.event.target.value;  
+        render(data, year_selected) // must be data, not data_year  (JM 160427 7pm)
+    }
+    
+    function y_menuChanged() {
+        console.log("y menu changed")
+        yseries = d3.event.target.value;  
+        render(data, year_selected)  // must be data, not data_year   (JM 160427 7pm)
+    }
+
+    function year_menuChanged() {
+        console.log("year menu changed")
+        //new_year = 1990
+        new_year = d3.event.target.value;
+        console.log("year menu changed.  New value: " + new_year)
+        // re-define the global variable that affects which year's data is plotted. 
+        year_selected = new_year;  
+        render(data, year_selected)  // must be data, not data_year   (JM 160427 7pm)
+    }
+
+    </script>
+  </body>
+</html>
