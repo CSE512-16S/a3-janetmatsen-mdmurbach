@@ -58,7 +58,7 @@ function add_x_y_dropdowns(option_list) {
 
   // populate the dropDown options (without labels)           
   var x_options = x_dropDown.selectAll("option")
-       .data(dropdown_options)
+       .data(option_list)
      .enter()
        .append("option");
   
@@ -88,7 +88,7 @@ function add_x_y_dropdowns(option_list) {
   // for each could probably be combined with some thought.
   var y_options = y_dropDown.selectAll("option")
        // appending on a an array (["Land area...", "Ag... (% of total )", ...]
-       .data(dropdown_options)
+       .data(option_list)
      .enter()
        .append("option");
        

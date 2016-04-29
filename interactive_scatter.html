@@ -255,6 +255,14 @@
         
         console.log("year selected: " + year_selected)
         data_year = nestedObjectByKey(data, "key", year_selected);
+
+        //update dropdowns
+        console.log("update dropdowns")
+        remove_xy_dropdowns()
+        // update options:
+        xy_dropdown_options = columnsWithEnoughPoints(data_year)
+        add_x_y_dropdowns(xy_dropdown_options)
+        
         
         filtered = data_year.filter(isSeries(xseries, yseries));
         
@@ -373,11 +381,12 @@
 
     function year_menuChanged() {
         console.log("year menu changed")
-        //update_dropdowns();
+
         new_year = d3.event.target.value;
         console.log("year menu changed.  New value: " + new_year)
         // re-define the global variable that affects which year's data is plotted. 
         year_selected = new_year;  
+
         render(data, year_selected)  // must be data, not data_year   (JM 160427 7pm)
     }
 
