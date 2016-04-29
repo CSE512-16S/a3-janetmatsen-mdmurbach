@@ -4,11 +4,9 @@ function remove(id) {
     return (elem=document.getElementById(id)).parentNode.removeChild(elem);
 }
 
-function removeDrop() {
+function remove_xy_dropdowns() {
     remove("x_drop")
-    // var d = document.getElementById('x_drop');
-    // var oldmenu = document.getElementById('newDropdownMenu');
-    // d.removeChild(oldmenu);
+    remove("y_drop")
 }
 
 function add_year_dropdown() {
@@ -48,6 +46,7 @@ function add_x_y_dropdowns(option_list) {
   // x-axis label
   x_label = d3.select("body").append("label")
                 .text("X axis")
+                .attr("id", "x_drop")
                 .attr("class","labels");
   
   // Create Dropdown table for x-axis
@@ -55,7 +54,6 @@ function add_x_y_dropdowns(option_list) {
                 //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
                 //.setAttribute("id", "uniqueIdentifier");
                 .attr("id", "x_drop")
-                // x_dropDown.attr('id', 'bina')
                 .attr("class","dropdowns");
 
   // populate the dropDown options (without labels)           
@@ -74,10 +72,12 @@ function add_x_y_dropdowns(option_list) {
 
   // Create Dropdown table for y-axis
   y_label = d3.select("body").append("label")
+                .attr("id", "y_drop")
                 .text("Y axis")
                 .attr("class","labels"); 
                 
   y_dropDown = y_label.append("select")
+                .attr("id", "y_drop")
                 .attr("name", "y-list")  // ?? redundant b/c not in CSS?
                 .attr("class","dropdowns");
 
