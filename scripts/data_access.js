@@ -63,6 +63,18 @@ function countMeaningfulValuesGivenYear(data_year_instance) {
   return vardict;
 }
 
+function columnsWithEnoughPoints(data_year_instance, n=0){
+// Return the names of series that have more than n points.
+  count_dict = countMeaningfulValuesGivenYear(data_year_instance);
+  good_columns = [];
+  // Loop through each key value pair and keep track of which columns
+  // have more than n non-null entries. 
+  for (var key_name in count_dict) {
+    if (count_dict[key_name] > n) { good_columns.push(key_name) }
+  }
+  return good_columns
+}
+
 
 function nestedObjectByKey(array, key_name, desired_value) {
 // If you have [Object, Object, ...] and each Object has an
