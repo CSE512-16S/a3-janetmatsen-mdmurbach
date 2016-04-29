@@ -6,6 +6,7 @@
     <script src="d3/d3.v3.js"></script>
     <!-- load script called data_access from scripts directory; dumps to this namespace --!>
     <script src="scripts/data_access.js"></script>
+    <script src="scripts/filter_out_empty_sets.js"></script>
     <!-- link to google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <style>  /* CSS styles are set here */
@@ -199,7 +200,7 @@
                   // initial setting of the year to plot by. 
                   // If you assign a value to a variable that has not been declared, 
                   // it will automatically become a GLOBAL variable.
-                  year_selected = 1991;
+                  year_selected = 1990;
                   data_year = nestedObjectByKey(data, "key", year_selected);
                   console.log(data_year)
                   
@@ -208,6 +209,9 @@
                                 .text("X axis")
                                 .attr("class","labels");
 
+                  // Dropdown options for the selected year: 
+                  dropdown_options = columnsWithEnoughPoints(data_year)
+
                   // Create Dropdown table for x-axis
                   x_dropDown = x_label.append("select")
                                 //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
@@ -215,7 +219,7 @@
 
                   // populate the dropDown options (without labels)           
                   var x_options = x_dropDown.selectAll("option")
-                       .data(data_year[0].values.map(function(d) { return (d.series); }))
+                       .data(dropdown_options)
                      .enter()
                        .append("option");
                   
@@ -243,7 +247,7 @@
                   // for each could probably be combined with some thought.
                   var y_options = y_dropDown.selectAll("option")
                        // appending on a an array (["Land area...", "Ag... (% of total )", ...]
-                       .data(data_year[0].values.map(function(d) { return (d.series); }))
+                       .data(dropdown_options)
                      .enter()
                        .append("option");
                        
@@ -268,6 +272,9 @@
                        .data( getListOfYears )
                      .enter()
                        .append("option");
+
+                  // tmp troubleshooting  
+                  //console.log(getListOfVars())
                   
 		  // put labels on the dropdown options.  
                   year_options.text(function(d) {return d}) // adds label to each dropdown row
@@ -322,8 +329,7 @@
         filtered = data_year.filter(isSeries(xseries, yseries));
         
         // print the data I grabbed. 
-        //console.table(JSON.stringify(data_year))
-        console.table(data_year)
+        //console.table(data_year)
         
         console.log("set xScale domain")
 	// d3.extent finds the minimum and maximum value in an array
@@ -417,7 +423,7 @@
         year_dropDown.on("change", year_menuChanged);
 
 	// print the data to the console (maybe useful for debugging)
-        console.log(g.selectAll("circle"))
+        //console.log(g.selectAll("circle"))
  
     }
     
