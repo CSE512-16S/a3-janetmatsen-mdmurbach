@@ -9,6 +9,61 @@ function getListOfYears() {
   return years;
 }
 
+
+function getListOfVars(){
+  // Just returns a list of all of the possible values given 
+  // the first year's first country object. 
+  // get just one year's data to investigate.
+  d = data[0].values[0].values;
+  variables = [];
+  for (i in d) {
+    //only look in the first object; assume they are all equivalent. 
+    variables.push(d[i]["series"])
+  }
+  return variables;
+};
+
+function varCountDict() {
+  varnames = getListOfVars()
+  // build an object w/ keys that are elements of varnames and values = 0
+  frequencies = {}
+  for (v in varnames) {
+  frequencies[varnames[v]] = 0;
+  }
+  return frequencies; 
+}
+
+// dyi = nestedObjectByKey(data, "key", 1991)
+function countMeaningfulValuesGivenYear(data_year_instance) {
+  // vardict is an object with key:value pairs where keys are series names
+  // like "Population growth (annual %)" and values are zero (initially)
+  vardict = varCountDict();
+  null_count = 0;
+
+  // loop over the data in data_year_instance and increment 
+  // the appropriate key by 1 if it has a numeric and non-null value. 
+  //for (key in vardict){
+  //  // adds 1 to every key:  vardict[key] += 1
+  //}
+  ////return vardict;
+  for (c_num in data_year_instance) {   // c_num is country number/index
+    // data_year_instance[num] gets you to a list of objects by country.  
+    // need to loop through the values in its values array
+    for (s_num in data_year_instance[c_num].values) {  // s_num is series number/index
+      //console.log(data_year_instance[c_num].values[s_num]["series"])
+      series_name = data_year_instance[c_num].values[s_num]["series"];
+      //console.log(data_year_instance[c_num].values[s_num]["value"])
+      series_value = data_year_instance[c_num].values[s_num]["value"];
+      //console.log(series_name + ": " + series_value)
+      if (isNaN(series_value)) {null_count += 1} else  { vardict[series_name] += 1 }
+    }
+  }
+  console.log("looping complete")
+  console.log("number of missing values across series: " + null_count)
+  return vardict;
+}
+
+
 function nestedObjectByKey(array, key_name, desired_value) {
 // If you have [Object, Object, ...] and each Object has an
 // array of objects as its value (e.g. from d3.nest), 
@@ -29,7 +84,10 @@ console.log("find object within array with key name " + key_name + ", and value 
       //console.log("return object: ")
       //console.log(right_array)
       // returns another list of objects!!
-      return right_object.values
+
+  // print the results:
+
+  return right_object.values
     };
    };
 };
