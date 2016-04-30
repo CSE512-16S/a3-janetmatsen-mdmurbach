@@ -23,24 +23,24 @@ Access our visualization at http://cse512-16s.github.io/a3-janetmatsen-mdmurbach
 ## Story Board
 
 Janet was particularly interested in which countries had especially high and low greenhouse gas emissions per amount of energy used.  
-Matt was particularly interested in XXXXX.
-We decided to make a plot that allowed exploration of both of our main questions and many others.
+Matt was particularly interested in seing how these types of data changed over time. Thus, we came up with the idea to make a visualization that allowed exploration of both of our main questions and many others.
 
-Mapping region to color would allow visualization of whether some regions of the world ...
+The first layout of the visualization was sketched out.
+
+![first](https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/first_sketch.jpg?raw=true)
+
+We also wanted to have a tooltip that showed up when the user mouses over a dot. This tooltip would show the country name.
+
+![tooltip](https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true)
 
 We had many ideas of features that could be added on to the basic scatter plot should time allow.
 For example, perhaps you could query a list of particular countries by similarly to the Baby Name Voyager. 
 Or, time series of each country's x and y values could be shown in an adjacent plot.  
 Zooming could allow you to focus on areas with many points. 
 
-Put either your storyboard content or a [link to your storyboard pdf file](storyboard.pdf?raw=true) here. Just like A2, you can use any software to create a *reasonable* pdf storyboard.
-
-
 ### Changes between Storyboard and the Final Implementation
 
-(A paragraph explaining changes between the storyboard and the final implementation.)
-
-
+As the map started to come together, we realized that mapping region to color would allow visualization of whether some regions of the world had similar trends or changed together over time. To add this we added the country region to the dataset, changed the fill color of the circles, and added a legend.
 
 ## Development Process
 
