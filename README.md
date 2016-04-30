@@ -22,21 +22,18 @@ Access our visualization at http://cse512-16s.github.io/a3-janetmatsen-mdmurbach
 
 ## Story Board
 
-Janet was particularly interested in which countries had especially high and low greenhouse gas emissions per amount of energy used.  
-Matt was particularly interested in seing how these types of data changed over time. Thus, we came up with the idea to make a visualization that allowed exploration of both of our main questions and many others.
+Janet was particularly interested in which countries had especially high and low greenhouse gas emissions per amount of energy used. Matt was particularly interested in seing how these types of data changed over time. Thus, we came up with the idea to make a visualization that allowed exploration of both of our main questions and many others. 
 
-The first layout of the visualization was sketched out.
+The first layout of the visualization was sketched out...
 
-![first](https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/first_sketch.jpg?raw=true)
+<img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/first_sketch.jpg?raw=true" width="50%"/>
 
-We also wanted to have a tooltip that showed up when the user mouses over a dot. This tooltip would show the country name.
+The dropdown menus would allow the user to update the data shown while a transition between the plots would allow the user to follow specific countries of interest as the data changed. We also wanted to have a tooltip that showed up when the user mouses over a dot. This tooltip would show the country name...
 
-![tooltip](https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true)
+<img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true" width="50%"/>
 
 We had many ideas of features that could be added on to the basic scatter plot should time allow.
-For example, perhaps you could query a list of particular countries by similarly to the Baby Name Voyager. 
-Or, time series of each country's x and y values could be shown in an adjacent plot.  
-Zooming could allow you to focus on areas with many points. 
+For example, perhaps you could query a list of particular countries by similarly to the Baby Name Voyager or have the time series of each country's x and y values shown in adjacent plots. Zooming could also allow you to focus on areas with many points. 
 
 ### Changes between Storyboard and the Final Implementation
 
@@ -51,6 +48,6 @@ Include:
   - What aspects took the most time?
   - 
 Having no prior experience with JavaScript or D3 led us to scope simple and add components as time and skill allowed.
-We began by implementing a static scatter plot.
+We began by implementing a simple static scatter plot.
 Next, drop-down menus allowed the user to change which data were mapped to the X and Y axes. 
 Subsequently D3.nest was used to break apart the data by year, and a third drop-down menu was added to plot data by year. 
