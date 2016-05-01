@@ -6,6 +6,7 @@
     <script src="d3/d3.v3.js"></script>
     <!-- load script called data_access from scripts directory; dumps to this namespace --!>
     <script src="scripts/data_access.js"></script>
+    <script src="scripts/dropdown_update.js"></script>
     <!-- link to google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <style>  /* CSS styles are set here */
@@ -20,9 +21,9 @@
       }
       /* Are we defining attributes for the classes axis and label simultaneously */
       .axis .label {
-        font-size: 20pt;
+        font-size: 15pt;
       }
-
+      
       /* classes "path" and "line" are used for axes (as is text) */
       /* same comma syntax as eBook: http://alignedleft.com/tutorials/d3/axes */
       .axis path, .axis line {
@@ -35,7 +36,7 @@
       .labels {
         display: block;
       }
-      
+ 
       .dropdowns {
         display: block;
         margin: 10px;
@@ -199,85 +200,22 @@
                   // initial setting of the year to plot by. 
                   // If you assign a value to a variable that has not been declared, 
                   // it will automatically become a GLOBAL variable.
-                  year_selected = 1991;
+                  year_selected = 1990;
                   data_year = nestedObjectByKey(data, "key", year_selected);
                   console.log(data_year)
                   
-		  // x-axis label
-                  x_label = d3.select("body").append("label")
-                                .text("X axis")
-                                .attr("class","labels");
+                  add_year_dropdown()
+  
 
-                  // Create Dropdown table for x-axis
-                  x_dropDown = x_label.append("select")
-                                //.attr("name", "x-list")  // ?? redundant b/c not in CSS? 
-                                .attr("class","dropdowns");
+                  // Dropdown options for the selected year: 
+                  dropdown_options = columnsWithEnoughPoints(data_year)
+                    
+                    
+		  add_x_y_dropdowns(dropdown_options)
 
-                  // populate the dropDown options (without labels)           
-                  var x_options = x_dropDown.selectAll("option")
-                       .data(data_year[0].values.map(function(d) { return (d.series); }))
-                     .enter()
-                       .append("option");
-                  
-		  // put labels on the dropdown options.  
-		  // (empty strings on dropdowns if omitted)    
-                  x_options.text(function(d) {return d}) // adds label to each dropdown row
-                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
-                    // set initially selected option
-                    .attr("selected", function(d) {if(d == xseries) { return d}}); 
-		    ;
-
-                  // Create Dropdown table for y-axis
-                  y_label = d3.select("body").append("label")
-                                .text("Y axis")
-                                .attr("class","labels"); 
-                                
-                  y_dropDown = y_label.append("select")
-                                .attr("name", "y-list")  // ?? redundant b/c not in CSS?
-                                .attr("class","dropdowns");
-
-                  // populate the dropDown options (without labels)  
-		  // ?? just curious, could the x and y functions be combined 
-		  // into 1 factored function? (J doesn't have namespace intuition yet)
-                  // M - I think there need to be two dropdown objects, but the data/attributes 
-                  // for each could probably be combined with some thought.
-                  var y_options = y_dropDown.selectAll("option")
-                       // appending on a an array (["Land area...", "Ag... (% of total )", ...]
-                       .data(data_year[0].values.map(function(d) { return (d.series); }))
-                     .enter()
-                       .append("option");
-                       
-		  // put text on each y dropDown
-                  y_options.text(function(d) {return d})
-                    .attr("value", function(d) {return d})
-                    // set initially selected option
-                    .attr("selected", function(d) {if(d == yseries) { return d}}); 
-					
-		  // TODO: add title at top showing the year selected. 
-		  // Create Dropdown table for the year
-                  year_label = d3.select("body").append("label")
-                    .text("year")
-                    .attr("class", "dropdowns");
-
-                  year_dropDown = year_label.append("select")
-                                .attr("class","dropdowns");
-
-                  // populate the dropDown options (without labels)           
-                  var year_options = year_dropDown.selectAll("option")
-                       .data( getListOfYears )
-                     .enter()
-                       .append("option");
-                  
-		  // put labels on the dropdown options.  
-                  year_options.text(function(d) {return d}) // adds label to each dropdown row
-                    .attr("value", function(d) {return d}) // accessed in x_menuChanged()
-                    // set initially selected option
-                    .attr("selected", function(d) {if(d == year_selected) { return d}}); 
-		    ;
-		
-		   // render filters out data with missing values, 
-		   // updates scales, plots the scatter points
-                   render(data, year_selected);
+		  // render filters out data with missing values, 
+		  // updates scales, plots the scatter points
+                  render(data, year_selected);
              
             });
             
@@ -317,12 +255,19 @@
         
         console.log("year selected: " + year_selected)
         data_year = nestedObjectByKey(data, "key", year_selected);
+
+        //update dropdowns
+        console.log("update dropdowns")
+        remove_xy_dropdowns()
+        // update options:
+        xy_dropdown_options = columnsWithEnoughPoints(data_year)
+        add_x_y_dropdowns(xy_dropdown_options)
+        
         
         filtered = data_year.filter(isSeries(xseries, yseries));
         
         // print the data I grabbed. 
-        //console.table(JSON.stringify(data_year))
-        console.table(data_year)
+        //console.table(data_year)
         
         console.log("set xScale domain")
 	// d3.extent finds the minimum and maximum value in an array
@@ -356,7 +301,7 @@
         circles.enter().append("circle");
 	// give the circles properties. 
         circles
-          .transition().duration(800)
+          .transition().duration(200)
           .attr("cx", function (d){
                     var index = d.values.find(function(f) { return f.series == xseries });
                     return xScale(index.value); })
@@ -416,7 +361,7 @@
         year_dropDown.on("change", year_menuChanged);
 
 	// print the data to the console (maybe useful for debugging)
-        console.log(g.selectAll("circle"))
+        //console.log(g.selectAll("circle"))
  
     }
     
@@ -436,11 +381,12 @@
 
     function year_menuChanged() {
         console.log("year menu changed")
-        //new_year = 1990
+
         new_year = d3.event.target.value;
         console.log("year menu changed.  New value: " + new_year)
         // re-define the global variable that affects which year's data is plotted. 
         year_selected = new_year;  
+
         render(data, year_selected)  // must be data, not data_year   (JM 160427 7pm)
     }
 
