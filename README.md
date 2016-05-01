@@ -26,11 +26,11 @@ Janet was particularly interested in which countries had especially high and low
 
 The first layout of the visualization was sketched out...
 
-<img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/first_sketch.jpg?raw=true" width="50%"/>
+<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/first_sketch.jpg?raw=true" width="100%"/></div>
 
 The dropdown menus would allow the user to update the data shown while a transition between the plots would allow the user to follow specific countries of interest as the data changed. We also wanted to have a tooltip that showed up when the user mouses over a dot. This tooltip would show the country name...
 
-<img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true" width="50%"/>
+<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true" width="100%"/></div>
 
 We had many ideas of features that could be added on to the basic scatter plot should time allow.
 For example, perhaps you could query a list of particular countries by similarly to the Baby Name Voyager or have the time series of each country's x and y values shown in adjacent plots. Zooming could also allow you to focus on areas with many points. 
@@ -41,13 +41,14 @@ As the map started to come together, we realized that mapping region to color wo
 
 ## Development Process
 
-Include:
 - Breakdown of how the work was split among the group members.
-- A commentary on the development process, including answers to the following questions:
+  - Initial static scatter plot (Matt and Janet)
+  - Add x/y dropdown menu and color by region (Matt)
+  - Change how data is read in and add year dropdown (Janet)
+
+  
+- Commentary on the development process, including answers to the following questions:
   - Roughly how much time did you spend developing your application?
+     - Matt ~ 20ish hrs??
   - What aspects took the most time?
-  - 
-Having no prior experience with JavaScript or D3 led us to scope simple and add components as time and skill allowed.
-We began by implementing a simple static scatter plot.
-Next, drop-down menus allowed the user to change which data were mapped to the X and Y axes. 
-Subsequently D3.nest was used to break apart the data by year, and a third drop-down menu was added to plot data by year. 
+       - Having no prior experience with JavaScript or D3 led us to scope simple and add components as time and skill allowed. We began by implementing a simple static scatter plot. Next, drop-down menus allowed the user to change which data were mapped to the X and Y axes. Subsequently D3.nest was used to break apart the data by year, and a third drop-down menu was added to plot data by year. 
