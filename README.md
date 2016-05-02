@@ -8,9 +8,9 @@
 
 ## World Bank Climat Data Visualization
 
-<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/scatter_screenshot.png?raw=true" width="50%"/></div>
+<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/master/pictures/scatter_screenshot.png?raw=true" width="100%"/></div>
 
-This interactive plot includes the data from the [World Bank's Climate data](http://data.worldbank.org/data-catalog/climate-change).
+This interactive plot includes the multidimensional data from the [World Bank's Climate data](http://data.worldbank.org/data-catalog/climate-change).
 The data includes yearly information for a range of environmental economic and developmental metrics. 
 You can explore trends between variables and identify which countries are outliers. 
 Hover over any point to see which country corresponts to the selected point. 
