@@ -71,9 +71,9 @@ In addition to each spending 20+ hours becoming familiar with fundamentals of D3
 In addition to reading all of the suggested materials in class, video tutorials were key for Janet.
 The ability to decode errors took more time than expected as well. 
 
-The amount of time acively coding was about 20 hours for each team member. 
+The amount of time acively coding (exclusing studying of fundamentals) was about 20 hours for each team member. 
  - Matt ~ 20ish hrs
- - Janet: ~20-30 hours 
+ - Janet: 28 hours 
     - ~10 getting the basic scatter plot up (single X, Y pair, no dropdowns, no coloration).  (This could be re-done in 2 hours with our updated understanding!)
     - ~10 understanding Matt's addition of dropdowns and use of d3.nest to doubly-nest the data (by year then country) and add a third dropdown for the year
     - ~8 hours writing javascript functions that count the number of non-null instance for each x/y option given the year.  The x and y dropdowns are deleted and added back using appropriate x/y options each time a new year is added. 
