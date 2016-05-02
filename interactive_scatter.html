@@ -61,6 +61,13 @@
     </style>
   </head>
   <body>
+  
+	<h1> CSE 512 - A3: Interactive Exploration of Climate Change Data from the World Bank</h1>
+	<h4> By: <a href="https://github.com/JanetMatsen" target="_blank">Janet Matsen</a> and <a href="https://github.com/mdmurbach" target="_blank">Matt Murbach</a></h4>
+
+	<h3>This visualization shows climate change data from the <a href="http://data.worldbank.org/data-catalog/climate-change" target="_blank">World Bank Climate Change Knowledge Portal</a>. The data includes yearly information for a range of environmental, economic, and developmental metrics. You can explore trends between variables by using drop-down menus to select the x and y axis variables. Hover over any point and to see which country corresponts to the selected point.</h3>
+	<br>
+	
     <script>
       // global variable definitions
       // have to be defined outside the d3.csv call so they can be accessed later on
@@ -301,7 +308,7 @@
         circles.enter().append("circle");
 	// give the circles properties. 
         circles
-          .transition().duration(800)
+          //.transition().duration(200)
           .attr("cx", function (d){
                     var index = d.values.find(function(f) { return f.series == xseries });
                     return xScale(index.value); })
