@@ -3,12 +3,13 @@
 
 ## Team Members
 
-1. Matt Murbach (mdmurbach)
-2. JanetMatsen (janetmatsen)
+1. Matt Murbach ([mdmurbach](https://github.com/mdmurbach))
+2. JanetMatsen ([janetmatsen](https://github.com/JanetMatsen))
 
 ## World Bank Climat Data Visualization
 
 <div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/master/pictures/scatter_screenshot.png?raw=true" width="70%"/></div>
+
 
 This interactive plot includes the multidimensional data from the [World Bank's Climate data](http://data.worldbank.org/data-catalog/climate-change).
 The data includes yearly information for a range of environmental economic and developmental metrics. 
