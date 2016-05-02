@@ -44,11 +44,16 @@ As the map started to come together, we realized that mapping region to color wo
 - Breakdown of how the work was split among the group members.
   - Initial static scatter plot (Matt and Janet)
   - Add x/y dropdown menu and color by region (Matt)
-  - Change how data is read in and add year dropdown (Janet)
+  - Added year option:  (Janet)
+    - Reformatted code (in Python) and used two d3 nest commands to allow access to data by year and country 
+    - Added a year dropdown 
+    - Wrote functions that remove x and y options that have no values to plot for the selected year.  
 
   
 - Commentary on the development process, including answers to the following questions:
   - Roughly how much time did you spend developing your application?
      - Matt ~ 20ish hrs??
+     - Janet: ~20-30 hours, most of which were learning about d3 and javascript. (I could reproduce my work in 3-6 hours if starting fresh!) 
   - What aspects took the most time?
-       - Having no prior experience with JavaScript or D3 led us to scope simple and add components as time and skill allowed. We began by implementing a simple static scatter plot. Next, drop-down menus allowed the user to change which data were mapped to the X and Y axes. Subsequently D3.nest was used to break apart the data by year, and a third drop-down menu was added to plot data by year. 
+      - Getting "up to speed" with D3 basics was the primary challenge.  Neighter of us had written any D3 or javascript.  In addition to reading all of the suggested materials in class, video tutorials were key for Janet.  The ability to decode errors took more time than expected as well. 
+      - Writing the functions that restrict the x and y options after a year was selected took the most active coding time for Janet. 
