@@ -25,7 +25,7 @@ The World Bank Climate Data set was appealing to Janet and Matt because of commo
 The data set consists of yearly data for dozens of measurable environmental and socail variables.
 Janet was having fun exploring the data in Pandas, but was frustrated that she could only generate single plots at a time.  
 For example: 
-<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/master/pictures/early_scatter_sample.png?raw=true" width="100%"/></div>
+<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/master/pictures/early_scatter_sample.png?raw=true" width="50%"/></div>
 
 Janet was particularly interested in which countries had especially high and low greenhouse gas emissions per amount of energy used. Matt was particularly interested in seing how these types of data changed over time. Thus, we came up with the idea to make a visualization that allowed exploration of both of our main questions and many others. 
 
