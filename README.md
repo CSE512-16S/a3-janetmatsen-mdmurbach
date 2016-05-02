@@ -30,7 +30,7 @@ The first layout of the visualization was sketched out...
 
 The dropdown menus would allow the user to update the data shown while a transition between the plots would allow the user to follow specific countries of interest as the data changed. We also wanted to have a tooltip that showed up when the user mouses over a dot. This tooltip would show the country name...
 
-<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true" width="50%"/></div>
+<div style="width: 50%; margin-left: auto; margin-right: auto; padding: 25px"><img src="https://github.com/CSE512-16S/a3-janetmatsen-mdmurbach/blob/gh-pages/pictures/tooltip.jpg?raw=true" width="30%"/></div>
 
 We had many ideas of features that could be added on to the basic scatter plot should time allow.
 For example, perhaps you could query a list of particular countries by similarly to the Baby Name Voyager or have the time series of each country's x and y values shown in adjacent plots. Zooming could also allow you to focus on areas with many points. 
